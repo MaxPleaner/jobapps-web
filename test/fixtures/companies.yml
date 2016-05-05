@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  desc: MyText
+  applied: MyText
+  todo: MyText
+  skip: MyText
+  rejected: MyText
+  notlaughing: MyString
+
+two:
+  name: MyString
+  desc: MyText
+  applied: MyText
+  todo: MyText
+  skip: MyText
+  rejected: MyText
+  notlaughing: MyString
