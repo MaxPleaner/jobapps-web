@@ -1,2 +1,73 @@
-<h1>Pages#root</h1>
-<p>Find me in app/views/pages/root.html.erb</p>
+<ul>
+  <li><a href="/">root</a></li>
+  <li><a href="/?all=true">All companies</a></li>
+  <li><form action="/">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="all" value="true">
+    <input type="text" name="category">
+    <input type="submit" value="category search">
+  </form></li>
+</ul>
+
+<hr>
+
+<% if @companies %>
+  <% @companies.each do |company| %>
+    <pre>
+      <%= raw company.attributes.ai(html: true).html_safe %>
+    </pre>
+  <% end %>
+<% elsif @company %>
+  
+  <a href="/?id=<%= Company.where("id < ?", @company.id).blank.first&.id || Company.blank.order(id: :desc).first&.id %>">Previous company</a> <br>
+
+  <a href="/?id=<%= Company.where("id > ?", @company.id).blank.first&.id || Company.blank.first&.id %>">Next company</a> <br>
+  
+  <%= raw @company.attributes.ai(html: true).html_safe %>
+  
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_skip">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="quick skip">
+  </form>
+  
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_apply">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="quick apply">
+  </form>
+  
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_todo">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="quick todo">
+  </form>
+  
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_rejected">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="quick rejected">
+  </form>
+  
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=skip_with_note">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="update_value">
+    <input type="submit" value="skip with note">
+  </form> <br>
+  
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=apply_with_note">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="update_value">
+    <input type="submit" value="apply with note">
+  </form> <br>
+
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=todo_with_note">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="update_value">
+    <input type="submit" value="todo with note">
+  </form> <br>  
+
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=not_laughing">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="update_value">
+    <input type="submit" value="not laughing">
+  </form> <br>
+
+<% end %>
+
