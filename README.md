@@ -1,4 +1,4 @@
-## Introduction / History
+## Introduction
 
 I have a project called "jobapps" which I've been repeatedly refactoring.
 
