@@ -13,9 +13,9 @@
 <div class="row">
     <div class="col-xs-12">
       <% if session["only_todos"] %>
-        <a href="/?filter=not_only_todos">don't only show todos</a>
+        <b>Showin only todos</b><a href="/?filter=not_only_todos">Show blanks instead</a>
       <% else %>
-        <a href="/?filter=only_todos">only show todos</a>
+        <b>Showing only blanks</b>  <a href="/?filter=only_todos">Show todos instead</a>
       <% end %>
     </div>
 </div>
