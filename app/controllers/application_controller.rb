@@ -15,6 +15,16 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def set_current_page(page)
+    {
+      only_todos: page.eql?("only_todos"),
+      no_filter: page.eql?("no_filter"),
+      most_recent_skips: page.eql?("most_recent_skips")
+    }.each do |k, v|
+      session[k.to_s] = v
+    end
+  end
+
   # Using Thread.current to access session from models
   # It's used for dynamic scoping on models
   # i.e. preferences for which records are returned

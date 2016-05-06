@@ -7,21 +7,13 @@ class PagesController < ApplicationController
     end
     filter = generic_params[:filter]
     if filter && filter.eql?("only_todos")
-      session["only_todos"] = true
-      session["most_recent_skips"] = false
-      session["no_filter"] = false
+      set_current_page("only_todos")
     elsif filter && filter.eql?("no_filter")
-      session["only_todos"] = false
-      session["most_recent_skips"] = false
-      session["no_filter"] = true
+      set_current_page("no_filter")
     elsif filter && filter.eql?("not_only_todos")
-      session["only_todos"] = false
-      session["most_recent_skips"] = false
-      session["no_filter"] = false
+      set_current_page("none")
     elsif filter && filter.eql?("most_recent_skips")
-      session["only_todos"] = false
-      session["most_recent_skips"] = true
-      session["no_filter"] = false
+      set_current_page("most_recent_skips")
       @most_recent_skip_count = generic_params[:most_recent_skip_count] || session["most_recent_skip_count"] || 5
       session["most_recent_skip_count"] = @most_recent_skip_count
     end
@@ -39,10 +31,20 @@ class PagesController < ApplicationController
         @company = Company.first
       elsif session["only_todos"]
         @company = Company.todo.limit(1).first
+        unless @company
+          @company = Company.first
+          set_current_page("no_filter")
+          flash[:messages] << "No more todos. Switching to no filter"
+        end
       elsif session["most_recent_skips"]
         @most_recent_skips = Company.skipped.last(@most_recent_skip_count)
       else
         @company = Company.blank.limit(1).first
+        unless @company
+          @company = Company.first
+          set_current_page("no_filter")
+          flash[:messages] << "No more blanks. Switching to no filter"
+        end
       end
     end
   end
