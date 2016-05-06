@@ -96,7 +96,7 @@ heroku open;
 - the [awesome_print](https://github.com/michaeldv/awesome_print) provides a few helpful methods:
   - `Object.ai(html: true)` produces a html-ready snapshot of an object.
   - `ap <object>` is a prettier alternative to `puts`
-- There are no initializers, rake tasks, or tests yet. A bit of awesome_print customization is done in [config/application.rb](config/application.rb)
+- There are no initializers, rake tasks, or tests yet. A bit of `awesome_print` customization is done in [config/application.rb](config/application.rb)
 
 
 
