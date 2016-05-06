@@ -6,7 +6,7 @@ I first wrote a ruby CLI using `loop` and `gets.chomp`.
 
 I eventually found the `ripl` gem and used it to build a [ruby_cli_skeleton](http://github.com/maxpleaner/ruby_cli_skeleton). I redid the jobapps program using this CLI skeleton and called it [job_tracker_cli](http://github.com/maxpleaner/job_tracker_cli).
 
-I then gave the project a third iteration, focusing on editable YAML files. This project is [jobapps](http://github.com/maxpleaner/jobapps). It still uses the ruby_cli_skeleton, but it focuses on using human-readable data serialization and text editors to work more productively. 
+I then gave the project a third iteration, focusing on editable YAML files. This project is [jobapps](http://github.com/maxpleaner/jobapps). It still uses the `ruby_cli_skeleton`, but it focuses on using human-readable data serialization and text editors to work more productively. 
 
 One morning I wanted to apply to jobs but thought it was time my jobapps project got a web interface.
 
@@ -16,7 +16,15 @@ This web interface doesn't actually have a way to add companies.  I didn't need 
 
 To add some companies, create a `db/seeds/yml` folder and put YAML files there. The name of the yaml file (i.e. `san_francisco` for `san_francisco.yml`) becomes the category for all companies the file contains. See [db/seeds.rb](db/seeds.rb) to inspect / edit the import script.
 
-The required keys on each company object are `name` and `desc`. Optional keys are `applied`, `todo`, `skip`, `jobs`, `rejected`, `notlaughing`. `category` is inferred from the filename. 
+The required keys on each company object are `name` and `desc`. `category` is inferred from the filename. Optional keys are `applied`, `todo`, `skip`, `jobs`, `rejected`, and `notlaughing`. 
+
+The web application uses the following query methods to select companies:  
+- `Company.blank` (where `applied`, `todo`, `skip`, and `rejected` are all falsey)
+- `Company.nonblank` (where any of `applied`, `todo`, `skip`, or `rejected` are truthy)
+- `Company.applied` (where `applied` is truthy)
+- `Company.skipped` (where `skip` is truthy)
+- `Company.rejected` (where `rejected` is truthy)
+- `Company.todos` (where `todo` is truthy)
 
 See the following example of a yaml file:
 
