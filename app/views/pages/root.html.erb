@@ -12,8 +12,19 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <a href="/?all=true">All companies</a>
+    <a href="/?all=true">
+      All companies
+    </a>
   </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+      <% if session["only_todos"] %>
+        <a href="/?filter=not_only_todos">don't only show todos</a>
+      <% else %>
+        <a href="/?filter=only_todos">only show todos</a>
+      <% end %>
+    </div>
 </div>
 <div class="row">  
   <div class="col-xs-12">
@@ -52,6 +63,12 @@
 <!-- Company Show View -->
 <!--  -->
 
+  <% if session["only_todos"] %>
+    <% companies_query = Company.todo %>
+  <% else %>
+    <% companies_query = Company.blank %>
+  <% end %>
+
   <div class="row">
     <div class="col-xs-12">
       <%= @percentage_completed %> completed
@@ -60,12 +77,12 @@
   
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= Company.where("id < ?", @company.id).blank.first&.id || Company.blank.order(id: :desc).first&.id %>">Previous company</a> <br>      
+      <a href="/?id=<%= companies_query.where("id < ?", @company.id).first&.id || companies_query.order(id: :desc).first&.id %>">Previous company</a> <br>      
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= Company.where("id > ?", @company.id).blank.first&.id || Company.blank.first&.id %>">Next company</a> <br>
+      <a href="/?id=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>">Next company</a> <br>
     </div>
   </div>
   <br>
@@ -141,7 +158,17 @@
     </form> <br>
   </div>
 </div>
-  
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="/update?id=<%= @company.id %>&cmd=undo_todo">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="undo todo">
+    </form> <br>
+  </div>
+</div>
+
+
+
   
   
   
