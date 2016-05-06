@@ -72,7 +72,7 @@
     </div>
   </div>
   <br>
-  
+
   <div class="row">
     <pre class="company">
       <%= raw @company.attributes.ai(html: true).html_safe %>
@@ -86,24 +86,28 @@
   <div class="col-xs-3">
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_skip">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
       <input type="submit" value="quick skip">
     </form>
   </div>
   <div class="col-xs-3">
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_apply">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
       <input type="submit" value="quick apply">
     </form>
   </div>
   <div class="col-xs-3">
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_todo">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
       <input type="submit" value="quick todo">
     </form>
   </div>
   <div class="col-xs-3">
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_rejected">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
       <input type="submit" value="quick rejected">
     </form>
   </div>

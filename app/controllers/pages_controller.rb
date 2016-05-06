@@ -44,12 +44,16 @@ class PagesController < ApplicationController
     when "undo_todo"
       @company.update(todo: nil)
     end
-    redirect_to "/?id=#{@company.id}"
+    if params[:next_id]
+      redirect_to "/?id=#{params[:next_id]}"
+    else
+      redirect_to "/?id=#{@company.id}"
+    end
   end
 
 
   def params(*args)
-    super(*args).permit(:all, :category, :id, :authenticity_token, :update_key, :update_value, :cmd, :filter)
+    super(*args).permit(:all, :category, :id, :authenticity_token, :update_key, :update_value, :cmd, :filter, :next_id)
   end
 
 end
