@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_flash_messages
   def set_flash_messages
-    flash[:messages] = []
+    flash[:messages] ||= []
   end
 
   before_action :store_session_in_thread
