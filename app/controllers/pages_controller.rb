@@ -7,6 +7,7 @@ class PagesController < ApplicationController
       session["only_todos"] = false
     end
     @percentage_completed = "#{((Company.nonblank.count.to_f / Company.count.to_f) * 100.to_f).round(2)}%"
+    @todos_count = Company.todo.count
     if params[:all]
       @companies = Company.all
       if session["only_todos"]
