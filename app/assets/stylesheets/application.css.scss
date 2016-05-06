@@ -17,6 +17,7 @@
 body, html {
   width: 100%;
   height: 100%;
+  font-family: monospace !important;;
   /*min-width: 700px;*/
 }
 
@@ -130,4 +131,18 @@ input[type='submit']:hover {
 .form-with-box {
   border: 1px solid black;
   padding: 10px;
+}
+
+.categories-toggler {
+  border: 1px solid black;
+  background: grey;
+  display: block;
+  font-weight: bold;
+  color: black;
+  a {
+    @include button;
+  }
+  a:hover {
+    background-color: lighten(lightblue, 10%);
+  }
 }
