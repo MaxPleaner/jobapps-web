@@ -6,7 +6,7 @@ I first wrote a ruby CLI using `loop` and `gets.chomp`.
 
 I eventually found the `ripl` gem and used it to build a [ruby_cli_skeleton](http://github.com/maxpleaner/ruby_cli_skeleton). I redid the jobapps program using this CLI skeleton and called it [job_tracker_cli](http://github.com/maxpleaner/job_tracker_cli).
 
-I then redid the project a second time, focusing on editable YAML files. This project is [jobapps](http://github.com/maxpleaner/jobapps). It still uses the ruby_cli_skeleton, but it focuses on using human-readable data serialization and text editors to work more productively. 
+I then gave the project a third iteration, focusing on editable YAML files. This project is [jobapps](http://github.com/maxpleaner/jobapps). It still uses the ruby_cli_skeleton, but it focuses on using human-readable data serialization and text editors to work more productively. 
 
 One morning I wanted to apply to jobs but thought it was time my jobapps project got a web interface.
 
