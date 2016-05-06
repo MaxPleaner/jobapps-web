@@ -88,11 +88,11 @@ heroku open;
 
 ## How the app is structured
 
-- HTTP basic auth via the HTTP_USERNAME and HTTP_PASSWORD environment variables
-- There's a single model, Company
-- There's a single controller, Pages which has two routes:
-  - root (handles all HTML views)
-  - update (redirects to root)
+- HTTP basic auth via the `HTTP_USERNAME` and `HTTP_PASSWORD` environment variables
+- There's a single model, `Company`
+- There's a single controller, `PagesController`, which has two routes:
+  - `GET /` (root action - handles all HTML views)
+  - `POST /update` (update action: redirects to root)
 - the [awesome_print](https://github.com/michaeldv/awesome_print) provides a few helpful methods:
   - `Object.ai(html: true)` produces a html-ready snapshot of an object.
   - `ap <object>` is a prettier alternative to `puts`
