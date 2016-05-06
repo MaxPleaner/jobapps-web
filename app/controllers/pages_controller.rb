@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def root
+    byebug
     if generic_params[:autoscroll] == "on"
       session["autoscroll"] = true
     elsif generic_params[:autoscroll] == "off"

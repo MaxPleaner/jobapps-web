@@ -1,7 +1,11 @@
 class Company < ApplicationRecord
 
   default_scope do
-    where("category NOT IN (?)", Category.where(hidden: true).pluck(:name))
+    if Category.any?
+      where("category NOT IN (?)", Category.where(hidden: true).pluck(:name))
+    else
+      all
+    end
   end
 
   def self.applied
