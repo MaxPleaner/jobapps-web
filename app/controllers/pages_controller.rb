@@ -8,19 +8,9 @@ class PagesController < ApplicationController
     end
     @percentage_completed = "#{((Company.nonblank.count.to_f / Company.count.to_f) * 100.to_f).round(2)}%"
     @todos_count = Company.todo.count
-    if params[:all]
-      @companies = Company.all
-      if session["only_todos"]
-        @companies = @companies.todos
-      end
-      category = params[:category]
-      if category
-        @companies = Company.where(category: category)
-        if session["only_todos"]
-          @companies = @companies.todos
-        end
-      end
-    elsif params[:id]
+    @application_count = Company.applied.count
+    @skipped_count = Company.skipped.count
+    if params[:id]
       @company = Company.find(params[:id])
     else
       if session["only_todos"]
