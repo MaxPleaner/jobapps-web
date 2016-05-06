@@ -24,5 +24,5 @@ Company.select(:category).distinct.pluck(:category).each do |category|
 end
 
 if Company.count.eql?(0)
-  Company.create(name: "foo", desc: "bar", category: Category.create(name: "foo-category", hidden: "false").name)
+  Company.create(name: "foo", desc: "bar", category: Category.create(name: "foo-category", hidden: false).name)
 end
