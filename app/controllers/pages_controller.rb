@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def root
+    @percentage_completed = "#{((Company.nonblank.count.to_f / Company.count.to_f) * 100.to_f).round(2)}%"
     if params[:all]
       @companies = Company.all
       category = params[:category]
@@ -34,7 +35,7 @@ class PagesController < ApplicationController
     when "not_laughing"
       @company.update(notlaughing: params[:update_value])
     end
-    redirect_to :back
+    redirect_to "/?id=#{@company.id}"
   end
 
 
