@@ -133,12 +133,12 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id %>"><span class="button">Previous company</span></a> <br>      
+      <a href="/?id=<%= companies_query.where("id < ?", @company&.id).last&.id || companies_query.order(id: :desc).first&.id %>"><span class="button">Previous company</span></a> <br>      
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>"><span class="button">Next company</span></a> <br>
+      <a href="/?id=<%= companies_query.where("id > ?", @company&.id).first&.id || companies_query.first&.id %>"><span class="button">Next company</span></a> <br>
     </div>
   </div>
   <br>
