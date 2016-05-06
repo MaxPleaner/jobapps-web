@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     @application_count = Company.applied.count
     @skipped_count = Company.skipped.count
     if generic_params[:filter] && generic_params[:filter].eql?("new_company")
-      @company = Company.new
+      @company = Company.new(flash["company"]) || Company.new
     elsif generic_params[:id]
       @company = Company.find(generic_params[:id])
     else
@@ -95,7 +95,13 @@ class PagesController < ApplicationController
       @company.update(starred: false)
     end
     if add_company
-      redirect_to "/?id=#{@company.id}"
+      if @company.persisted?
+        redirect_to "/?id=#{@company.id}"
+      else
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+        flash["company"] = @company.attributes
+        redirect_to "/?filter=new_company"
+      end
     elsif generic_params[:next_id]
       redirect_to "/?id=#{generic_params[:next_id]}"
     else
