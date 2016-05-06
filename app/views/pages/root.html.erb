@@ -13,9 +13,14 @@
 <div class="row">
     <div class="col-xs-12">
       <% if session["only_todos"] %>
-        <b>Showin only todos</b> | <a href="/?filter=not_only_todos">Show blanks instead</a>
+        Showing todos | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a>
       <% else %>
-        <b>Showing only blanks</b> | <a href="/?filter=only_todos">Show todos instead</a>
+        <% if session["most_recent_skips"] %>
+          Showing skips (<a href="/?filter=most_recent_skips&most_recent_skip_count=<%= @most_recent_skip_count %>">index</a>) | <a href="/?filter=only_todos">Show todos</a> | 
+          <a href="/?filter=not_only_todos">Show blanks</a>
+        <% else %>
+          Showing blanks | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=most_recent_skips">Show skips</a>
+        <% end %>
       <% end %>
     </div>
 </div>
@@ -25,15 +30,23 @@
 <!--  -->
 <!--  -->
 
-<% if @companies %>
+<% if @most_recent_skips %>
 
 <!--  -->
 <!-- Companies List View -->
 <!--  -->
 
-  <% @companies.each do |company| %>
+<form action="/" method="GET">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="filter" value="most_recent_skips">
+  <input type="number" name="most_recent_skip_count" placeholder="number" value="<%= @most_recent_skip_count || 5 %>">
+  <input type="submit" value="change number">
+</form>
+
+  <% @most_recent_skips.each do |company| %>
     <pre class="company">
-      <%= raw company.attributes.ai(html: true).html_safe %>
+      <a href="/?id=<%= company.id %>"><%= raw company.attributes.ai(html: true).html_safe %></a>
+      <%#= raw company.attributes.ai(html: true).html_safe %>
     </pre>
   <% end %>
 
@@ -156,6 +169,14 @@
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=undo_todo">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="submit" value="undo todo">
+    </form> <br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="/update?id=<%= @company.id %>&cmd=undo_skip">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="undo skip">
     </form> <br>
   </div>
 </div>
