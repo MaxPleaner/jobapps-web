@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body, html {
+  width: 100%;
+  height: 100%;
+  /*min-width: 700px;*/
+}
+
+body {
+  background-color: cadetblue !important;
+}
+
+.bordered {
+  border: 1px solid black;
+}
+
+.container {
+  font-size: 9px;
+}
+pre, pre pre{
+  color: white;
+  background-color: black;
+  margin: -30px -15px -45px -15px;
+  white-space: pre-wrap;
+}
+
+#stats {
+  width: 100%;
+  border: 1px solid white;
+  background-color: black;
+  display: inline-block;
+  padding: 5px;
+  color: white;
+  font-size: 25px;
+}
+
+.statistic {
+  /*width: 100%;*/
+  border: 1px solid white;
+  margin: 5px;
+  padding: 5px;
+  display: inline-block;
+}
+
+@mixin button {
+  font-size: 20px;
+  display: inline-block;
+  padding: 15px;
+  border: 1px solid black;
+  margin: 10px;
+  color: black;
+  font-weight: bold;
+  background-color: lightblue;
+  transition: background-color .3s ease-in;
+}
+
+.button {
+  @include button
+}
+
+.button:visited {
+  color: black;
+}
+
+.button:hover {
+  color: black;
+  background-color: lighten(lightblue, 10%);
+}
+
+.button.pseudobutton {
+  transition: none;
+  background-color: lighten(lightblue, 15%);
+}
+
+// .button a {
+//   border: 1px solid blue;  
+//   padding: 5px;
+//   background-color: lightblue;
+//   transition: background-color .3s ease-in;
+// }
+
+// .button a:hover {
+//   background-color: lighten(lightblue, 10%);
+// }
+
+.large-text {
+  font-size: 20px;
+  display: inline-block;
+  margin: 20px;
+}
+
+input[type='submit'] {
+  @include button;
+  // font-size: 40px;
+}
+
+input[type='submit']:hover {
+    background-color: lighten(lightblue, 10%);
+
+}
+
+.flash-message {
+  border: 1px solid darkred;
+}
+
+
+
+.biginput {
+  font-size: 16px;
+}
+
+.inline-forms form {
+  display: inline-block;
+}
+
+.form-with-box {
+  border: 1px solid black;
+  padding: 10px;
+}

@@ -9,29 +9,44 @@ Bundler.require(*Rails.groups)
 
 class Object
   def ai(options)
-    super(options.merge(
-      {:color => {
-          :args       => :white,
-          :array      => :white,
-          :bigdecimal => :white,
-          :class      => :white,
-          :date       => :white,
-          :falseclass => :white,
-          :fixnum     => :white,
-          :float      => :white,
-          :hash       => :white,
-          :keyword    => :white,
-          :method     => :white,
-          :nilclass   => :white,
-          :rational   => :white,
-          :string     => :white,
-          :struct     => :white,
-          :symbol     => :white,
-          :time       => :white,
-          :trueclass  => :white,
-          :variable   => :white
-      }}
-  ))
+    if is_a?(Hash)
+      reject { |k,v| v.blank? }.reduce("") do |str, (k,v)|
+        str = "<pre>" if str.blank?
+        str += "<b>#{k}</b><br>"
+        indented_v = v.to_s.split("\n").map do |line|
+          "  #{line}"
+        end.reject(&:blank?).join("\n")
+        str += "<i>#{indented_v}</i><br>"
+        next str
+      end + "</pre>"
+    else
+      super(options.merge(
+        {
+          indent: -2,
+          :color => {
+            :args       => :white,
+            :array      => :white,
+            :bigdecimal => :white,
+            :class      => :white,
+            :date       => :white,
+            :falseclass => :white,
+            :fixnum     => :white,
+            :float      => :white,
+            :hash       => :white,
+            :keyword    => :white,
+            :method     => :white,
+            :nilclass   => :white,
+            :rational   => :white,
+            :string     => :white,
+            :struct     => :white,
+            :symbol     => :white,
+            :time       => :white,
+            :trueclass  => :white,
+            :variable   => :white
+          }
+        }
+      ))
+    end
   end
 end
 
