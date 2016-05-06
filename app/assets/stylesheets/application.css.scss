@@ -50,9 +50,10 @@ pre, pre pre{
   padding: 7px;
   background-color: darken(orange, 45%);
   font-weight: bold;
-  color: darken(white, 10%);
+  color: lighten(grey, 10%);
   letter-spacing: 1px;
   font-size: 20px;
+  margin: 5px;
 }
 #stats {
   width: 100%;

@@ -11,13 +11,13 @@ class Object
   def ai(options)
     if is_a?(Hash)
       reject { |k,v| v.blank? }.reduce("") do |str, (k,v)|
-        str = "<div>" if str.blank?
+        str = "<pre>" if str.blank?
         indented_v = v.to_s.split("\n").map do |line|
           "  #{line}"
         end.reject(&:blank?).join
         str += "<span class='company-attr'><small>#{k}: </small>#{indented_v}</span>"
         next str
-      end + "</div>"
+      end + "</pre>"
     else
       super(options.merge(
         {
