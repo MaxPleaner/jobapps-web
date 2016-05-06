@@ -75,11 +75,6 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: JobappsWeb_production
-  username: JobappsWeb
-  password: <%= ENV['JOBAPPSWEB_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
