@@ -83,6 +83,7 @@ heroku run rake db:migrate
 heroku run rake db:seed
 heroku run config:set HTTP_USERNAME=admin;
 heroku run config:set HTTP_USERNAME=password;
+heroku config:add LOG_LEVEL=DEBUG
 heroku open;
 ```
 
