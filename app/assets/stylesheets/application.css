@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+.bordered {
+  border: 1px solid black;
+}
+
+.container {
+  font-size: 9px;
+}
+pre pre{
+  color: white;
+  background-color: black;
+}
