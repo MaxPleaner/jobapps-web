@@ -48,7 +48,7 @@ See the following example of a yaml file:
     their food is so good
     jobs url: http://meat-labs.com/?jobs=javascript
 
-name: "NSA"
+- name: "NSA"
   desc: "Your favorite spy service"
   jobs: "Microcontroller Engineer"
   rejected: true
