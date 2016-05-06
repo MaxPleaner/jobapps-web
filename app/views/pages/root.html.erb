@@ -62,6 +62,13 @@
   </div><br>
   
   <div class="row">
+    <pre class="company">
+      <%= raw @company.attributes.ai(html: true).html_safe %>
+    </pre>
+  </div>  
+  <br>
+
+  <div class="row">
     <div class="col-xs-12">
       <a href="/?id=<%= companies_query.where("id < ?", @company.id).first&.id || companies_query.order(id: :desc).first&.id %>">Previous company</a> <br>      
     </div>
@@ -73,12 +80,7 @@
   </div>
   <br>
 
-  <div class="row">
-    <pre class="company">
-      <%= raw @company.attributes.ai(html: true).html_safe %>
-    </pre>
-  </div>  
-  <br>
+
 <div class="row">
   <div class="col-xs-3">
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_skip">
