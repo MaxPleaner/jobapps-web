@@ -40,3 +40,7 @@ pre, pre pre{
 input[type='submit'] {
   font-size: 40px;
 }
+
+.flash-message {
+  border: 1px solid darkred;
+}

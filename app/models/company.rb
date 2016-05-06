@@ -38,4 +38,32 @@ class Company < ApplicationRecord
     end
   end
 
+  def name=(val)
+    super(val || "")
+  end
+  def desc=(val)
+    super(val || "")
+  end
+  def applied=(val)
+    super(val || "")
+  end
+  def skip=(val)
+    super(val || "")
+  end
+  def rejected=(val)
+    super(val || "")
+  end
+  def notlaughing=(val)
+    super(val || "")
+  end
+  def category=(val)
+    super(val || "")
+  end
+  def jobs=(val)
+    super(val || "")
+  end
+  def starred=(val)
+    super(val || false)
+  end
+
 end

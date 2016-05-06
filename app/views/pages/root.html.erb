@@ -13,20 +13,24 @@
 <div class="row">
     <div class="col-xs-12">
       <% if session["only_todos"] %>
-        Showing todos | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a>
+        Showing todos | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a>
+      <% elsif session["no_filter"] %>
+        Using no filter | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=only_todos">Show todos</a>
       <% else %>
         <% if session["most_recent_skips"] %>
           Showing skips (<a href="/?filter=most_recent_skips&most_recent_skip_count=<%= @most_recent_skip_count %>">index</a>) | <a href="/?filter=only_todos">Show todos</a> | 
-          <a href="/?filter=not_only_todos">Show blanks</a>
+          <a href="/?filter=not_only_todos">Show blanks</a> |
+          <a href="/?filter=no_filter">No filter</a>
         <% else %>
-          Showing blanks | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=most_recent_skips">Show skips</a>
+          Showing blanks | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a>
         <% end %>
       <% end %> <br>
       <% if session[:autoscroll] %>
         <a href="/?autoscroll=off">Turn Autoscroll Off</a>
       <% else %>
         <a href="/?autoscroll=on">Turn Autoscroll On</a>
-      <% end %>
+      <% end %> <br>
+      <a href="/?filter=new_company">Add Company</a>
     </div>
 </div>
 
@@ -47,6 +51,12 @@
 
 
 <hr>
+
+<% flash[:messages].each do |message| %>
+  <pre class="flash-message">
+    <%= message %>
+  </pre>
+<% end %>
 
 <!--  -->
 <!--  -->
@@ -74,7 +84,28 @@
 <!--  -->
 <!--  -->
 
-<% elsif @company %>
+<% elsif !@company.persisted? %>
+
+<!--  -->
+<!-- New Company -->
+<!--  -->
+  <form action="/update?cmd=add_company" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="name" placeholder="name"> <br>
+    <input type="text" name="desc" placeholder="description"> <br>
+    <input type="text" name="jobs" placeholder="jobs"> <br>
+    <input type="text" name="applied" placeholder="applied">  <br>
+    <input type="text" name="rejected" placeholder="rejected"> <br>
+    <input type="text" name="skip" placeholder="skip"> <br>
+    <input type="text" name="todo" placeholder="todo"> <br>
+    <input type="text" name="category" placeholder="category"> <br>
+    <input type="submit" value="add company">
+  </form>
+
+<!--  -->
+<!--  -->
+
+<% else %>
 
 <!--  -->
 <!-- Company Show View -->
@@ -84,13 +115,15 @@
     <% companies_query = Company.todo %>
   <% elsif session["most_recent_skips"] %>
     <% companies_query = Company.skipped %>
+  <% elsif session["no_filter"] %>
+    <% companies_query = Company.all %>
   <% else %>
     <% companies_query = Company.blank %>
   <% end %>
 
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id < ?", @company.id).first&.id || companies_query.order(id: :desc).first&.id %>"><span class="large-text">Previous company</span></a> <br>      
+      <a href="/?id=<%= companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id %>"><span class="large-text">Previous company</span></a> <br>      
     </div>
   </div>
   <div class="row">
@@ -101,10 +134,27 @@
   <br>
 
   <div class="row">
-    <pre class="company">
-      <%= raw @company.attributes.ai(html: true).html_safe %>
-    </pre>
-  </div>  
+    <div class="col-xs-12">
+      <pre class="company">
+        <%= raw @company.attributes.ai(html: true).html_safe %>
+      </pre> <br>
+      <% if @company.starred %>
+        <form action="/update" method="POST" >
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="id" value="<%= @company.id %>">
+          <input type="hidden" name="cmd" value="unstar">
+          <input type="submit" value="unstar">
+        </form>
+      <% else %>
+        <form action="/update" method="POST" >
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="id" value="<%= @company.id %>">
+          <input type="hidden" name="cmd" value="star">
+          <input type="submit" value="star">
+        </form>
+      <% end %>
+    </div>
+  </div>
   <br>
 
 
@@ -175,6 +225,15 @@
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="text" name="update_value">
       <input type="submit" value="not laughing">
+    </form> <br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="/update?id=<%= @company.id %>&cmd=set_category">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="text" name="update_value">
+      <input type="submit" value="set category">
     </form> <br>
   </div>
 </div>
