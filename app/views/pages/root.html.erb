@@ -21,6 +21,11 @@
         <% else %>
           Showing blanks | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=most_recent_skips">Show skips</a>
         <% end %>
+      <% end %> <br>
+      <% if session[:autoscroll] %>
+        <a href="/?autoscroll=off">Turn Autoscroll Off</a>
+      <% else %>
+        <a href="/?autoscroll=on">Turn Autoscroll On</a>
       <% end %>
     </div>
 </div>
@@ -207,3 +212,11 @@
 <br>
 <br>
 <br>
+
+<script>
+<% if session[:autoscroll] %>
+  $( document ).on('turbolinks:load', function() {
+    $('body').scrollTo('.large-text');
+  })
+<% end %>
+</script>

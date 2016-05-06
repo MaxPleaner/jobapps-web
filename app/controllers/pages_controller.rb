@@ -1,5 +1,10 @@
 class PagesController < ApplicationController
   def root
+    if params[:autoscroll] == "on"
+      session["autoscroll"] = true
+    elsif params[:autoscroll] == "off"
+      session["autoscroll"] = false
+    end
     filter = params[:filter]
     if filter && filter.eql?("only_todos")
       session["only_todos"] = true
@@ -65,7 +70,7 @@ class PagesController < ApplicationController
 
 
   def params(*args)
-    super(*args).permit(:all, :category, :id, :authenticity_token, :update_key, :update_value, :cmd, :filter, :next_id, :most_recent_skip_count)
+    super(*args).permit(:all, :category, :id, :authenticity_token, :update_key, :update_value, :cmd, :filter, :next_id, :most_recent_skip_count, :autoscroll)
   end
 
 end
