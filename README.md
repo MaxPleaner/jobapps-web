@@ -105,4 +105,4 @@ The UI probably looks really wacky, but I've intentionally set some of the most-
 
 ## GIF / Proof
 
-![usage gif](https://raw.githubusercontent.com/maxpleaner/jobapps-web/branch/usage.gif)
+![usage gif](https://raw.githubusercontent.com/maxpleaner/jobapps-web/master/usage.gif)
