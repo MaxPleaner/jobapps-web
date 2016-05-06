@@ -61,16 +61,24 @@
 
   <% if session["only_todos"] %>
     <% companies_query = Company.todo %>
+  <% elsif session["most_recent_skips"] %>
+    <% companies_query = Company.skipped %>
   <% else %>
     <% companies_query = Company.blank %>
   <% end %>
 
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-6">
       <%= @percentage_completed %> completed <br>
       <%= @todos_count %> todos <br>
       <%= @application_count %> applied <br>
       <%= @skipped_count %> skipped
+    </div>
+    <div class="col-xs-6">
+      <br>
+      <br>
+      <br>
+      remaining: <%= Company.blank.count %>
     </div>
   </div><br>
   
