@@ -98,5 +98,8 @@ heroku open;
   - `ap <object>` is a prettier alternative to `puts`
 - There are no initializers, rake tasks, or tests yet. A bit of `awesome_print` customization is done in [config/application.rb](config/application.rb)
 
+## Note
+
+The UI probably looks really wacky, but I've intentionally set some of the most-used buttons to have massive font sizes so I can easily press them on my tablet.
 
 
