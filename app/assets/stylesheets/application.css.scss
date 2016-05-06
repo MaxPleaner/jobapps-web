@@ -39,6 +39,21 @@ pre, pre pre{
   white-space: pre-wrap;
 }
 
+
+.company pre {
+  font-size: 16px;
+}
+
+.company-attr {
+  display: inline-block;
+  border: 1px solid orange;
+  padding: 7px;
+  background-color: darken(orange, 45%);
+  font-weight: bold;
+  color: darken(white, 10%);
+  letter-spacing: 1px;
+  font-size: 20px;
+}
 #stats {
   width: 100%;
   border: 1px solid white;
