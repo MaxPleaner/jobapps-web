@@ -1,5 +1,9 @@
 class Company < ApplicationRecord
 
+  default_scope do
+    where("category NOT IN (?)", Category.where(hidden: true).pluck(:name))
+  end
+
   def self.applied
     where("applied IS NOT NULL")
   end

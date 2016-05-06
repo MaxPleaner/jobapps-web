@@ -47,6 +47,17 @@ class PagesController < ApplicationController
     end
   end
 
+  def category_toggler
+    @categories = Category.all.order(id: :desc)
+    if generic_params[:cmd] && generic_params[:cmd].eql?("toggle")
+      @category = Category.find_by(id: generic_params[:category_id])
+      @category.update(hidden: !@category.hidden)
+      redirect_to "/category_toggler"
+    else
+      render "category_toggler"
+    end
+  end
+
   def update
     @company = Company.find_by(id: generic_params[:id])
     cmd = generic_params[:cmd]
@@ -92,7 +103,7 @@ class PagesController < ApplicationController
 
 
   def generic_params(*args)
-    params.permit(:all, :category, :id, :authenticity_token, :update_key, :update_value, :cmd, :filter, :next_id, :most_recent_skip_count, :autoscroll)
+    params.permit(:all, :category, :id, :authenticity_token, :update_key, :update_value, :cmd, :filter, :next_id, :most_recent_skip_count, :autoscroll, :category_id)
   end
 
   def company_params

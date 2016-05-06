@@ -18,3 +18,7 @@ Dir.glob(Rails.root.join("db/seeds/yml/**/*")).each do |filename|
     )
   end
 end
+
+Company.select(:category).distinct.pluck(:category).each do |category|
+  Category.create(name: category, hidden: false)
+end

@@ -9,4 +9,18 @@ class ApplicationController < ActionController::Base
     flash[:messages] = []
   end
 
+  before_action :store_session_in_thread
+  def store_session_in_thread
+    Thread.current[:session] = session
+  end
+
+
+  # Using Thread.current to access session from models
+  # It's used for dynamic scoping on models
+  # i.e. preferences for which records are returned
+  def session=(key, val)
+    res = super(key, val)
+    Thread.current[:session] = res
+  end
+
 end

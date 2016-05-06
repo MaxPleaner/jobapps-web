@@ -1,0 +1,19 @@
+<form action="/">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="back to root">
+</form> <br> <br> <br>
+
+<ul>
+<% @categories.each do |category| %>
+  <li>
+    <% if category.hidden %>
+      <a href="/category_toggler?cmd=toggle&category_id=<%= category.id %>">Show</a>
+    <% else %>
+      <a href="/category_toggler?cmd=toggle&category_id=<%= category.id %>">Hide</a>
+    <% end %>
+    <%= category.name %>
+  </li>
+<% end %>
+</ul>
+
+
