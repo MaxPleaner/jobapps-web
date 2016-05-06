@@ -25,3 +25,13 @@ pre pre{
   color: white;
   background-color: black;
 }
+
+.large-text {
+  font-size: 40px;
+  display: inline-block;
+  margin: 20px;
+}
+
+input[type='submit'] {
+  font-size: 40px;
+}

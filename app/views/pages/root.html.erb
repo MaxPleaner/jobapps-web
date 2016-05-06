@@ -62,23 +62,24 @@
   </div><br>
   
   <div class="row">
+    <div class="col-xs-12">
+      <a href="/?id=<%= companies_query.where("id < ?", @company.id).first&.id || companies_query.order(id: :desc).first&.id %>"><span class="large-text">Previous company</span></a> <br>      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="/?id=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>"><span class="large-text">Next company</span></a> <br>
+    </div>
+  </div>
+  <br>
+  
+  <div class="row">
     <pre class="company">
       <%= raw @company.attributes.ai(html: true).html_safe %>
     </pre>
   </div>  
   <br>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id < ?", @company.id).first&.id || companies_query.order(id: :desc).first&.id %>">Previous company</a> <br>      
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>">Next company</a> <br>
-    </div>
-  </div>
-  <br>
 
 
 <div class="row">
