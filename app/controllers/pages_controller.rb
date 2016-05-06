@@ -53,7 +53,7 @@ class PagesController < ApplicationController
       @company.update(notlaughing: params[:update_value])
     when "undo_todo"
       @company.update(todo: nil)
-    when "undo skip"
+    when "undo_skip"
       @company.update(skip: nil)
     end
     if params[:next_id]

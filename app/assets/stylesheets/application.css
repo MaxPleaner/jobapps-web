@@ -21,10 +21,15 @@
 .container {
   font-size: 9px;
 }
-pre pre{
+pre, pre pre{
   color: white;
   background-color: black;
 }
+
+#stats pre{
+  min-width: 700px;
+}
+
 
 .large-text {
   font-size: 40px;

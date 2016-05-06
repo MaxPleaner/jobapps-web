@@ -25,6 +25,22 @@
     </div>
 </div>
 
+  <div class="row">
+    <div class="col-xs-6">
+      <% stats_string = "#{@percentage_completed} completed | #{@todos_count} todos | #{@application_count} applied | #{@skipped_count} skipped | #{Company.blank.count} remaining" %>
+      <span id="stats">
+        <%= raw stats_string.ai(html: true).html_safe %>
+      </span>
+    </div>
+    <div class="col-xs-6">
+      <br>
+      <br>
+      <br>
+      
+    </div>
+  </div><br>
+
+
 <hr>
 
 <!--  -->
@@ -67,21 +83,6 @@
     <% companies_query = Company.blank %>
   <% end %>
 
-  <div class="row">
-    <div class="col-xs-6">
-      <%= @percentage_completed %> completed <br>
-      <%= @todos_count %> todos <br>
-      <%= @application_count %> applied <br>
-      <%= @skipped_count %> skipped
-    </div>
-    <div class="col-xs-6">
-      <br>
-      <br>
-      <br>
-      remaining: <%= Company.blank.count %>
-    </div>
-  </div><br>
-  
   <div class="row">
     <div class="col-xs-12">
       <a href="/?id=<%= companies_query.where("id < ?", @company.id).first&.id || companies_query.order(id: :desc).first&.id %>"><span class="large-text">Previous company</span></a> <br>      
