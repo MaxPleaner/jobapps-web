@@ -70,13 +70,13 @@ class PagesController < ApplicationController
     when "set_category"
       @company.update(category: generic_params[:update_value])
     when "quick_skip"
-      @company.update(skip: "true")
+      @company.update(skip: "true", todo: nil)
     when "quick_apply"
-      @company.update(applied: "true")
+      @company.update(applied: "true", todo: nil)
     when "quick_todo"
       @company.update(todo: "true")
     when "quick_rejected"
-      @company.update(rejected: "true")
+      @company.update(rejected: "true", todo: nil)
     when "skip_with_note"
       @company.update(skip: generic_params[:update_value])
     when "apply_with_note"
