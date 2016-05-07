@@ -93,6 +93,18 @@ class PagesController < ApplicationController
       @company.update(starred: true)
     when "unstar"
       @company.update(starred: false)
+    when "undo_apply"
+      @company.update(applied: false)
+    end
+    if @company.persisted?
+      session["recently_edited_companies"] ||= []
+      session["recently_edited_companies"] = session["recently_edited_companies"].reject { |company|
+          company["id"].eql?(@company.id)
+      }
+      session["recently_edited_companies"] << @company.status.merge(
+        "id" => @company.id
+      )
+      session["recently_edited_companies"].pop if session["recently_edited_companies"].length > 5
     end
     if add_company
       if @company.persisted?

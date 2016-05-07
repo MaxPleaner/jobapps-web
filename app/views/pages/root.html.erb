@@ -49,7 +49,7 @@
   <div class="row">
     <div class="col-xs-12">
       <% stats_string = "<i>stats</i><br><div class='statistic'>#{@percentage_completed} completed</div><div class='statistic'>#{@todos_count} todos </div><div class='statistic'>#{@application_count} applied </div><div class='statistic'>#{@skipped_count} skipped </div><div class='statistic'>#{Company.blank.count} remaining </div>" %>
-      <span id="stats">
+      <span class="stats">
         <%= raw stats_string.html_safe %>
       </span>
     </div>
@@ -122,23 +122,44 @@
 <!--  -->
 
   <% if session["only_todos"] %>
+    <% page_name = "only todos" %>
     <% companies_query = Company.todo %>
   <% elsif session["most_recent_skips"] %>
+    <% page_name = "skipped" %>
     <% companies_query = Company.skipped %>
   <% elsif session["no_filter"] %>
+    <% page_name = "all" %>
     <% companies_query = Company.all %>
   <% else %>
+    <% page_name = "blanks" %>
     <% companies_query = Company.blank %>
   <% end %>
 
+<% if session["recently_edited_companies"]&.any? %>
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id %>"><span class="button">Previous company</span></a> <br>      
+      <div class="stats">
+        <i>recently edited companies</i><br>
+        <% session[:recently_edited_companies].reverse_each do |attrs| %>
+          <span class="company-attr">
+            <a href="/?id=<%= attrs["id"] %>">
+              <%= attrs["name"] %>: <%= attrs.keys - ["name", "id"] %> 
+            </a>
+          </span> <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="/?id=<%= companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id %>"><span class="button">Previous company (query: "<%= page_name %>")</span></a> <br>      
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>"><span class="button">Next company</span></a> <br>
+      <a href="/?id=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>"><span class="button">Next company (query: "<%= page_name %>")</span></a> <br>
     </div>
   </div>
   <br>
@@ -176,28 +197,28 @@
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_skip">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
-      <input type="submit" value="quick skip">
+      <input type="submit" value="skip & next">
     </form>
   <!-- </div> -->
   <!-- <div class="col-xs-3"> -->
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_apply">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
-      <input type="submit" value="quick apply">
+      <input type="submit" value="apply & next">
     </form>
   <!-- </div> -->
   <!-- <div class="col-xs-3"> -->
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_todo">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
-      <input type="submit" value="quick todo">
+      <input type="submit" value="todo & next">
     </form>
   <!-- </div> -->
   <!-- <div class="col-xs-3"> -->
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_rejected">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>>
-      <input type="submit" value="quick rejected">
+      <input type="submit" value="rejected & next">
     </form>
   <!-- </div> -->
 </div>
@@ -265,6 +286,15 @@
     </form> <br>
   </div>
 </div>
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="/update?id=<%= @company.id %>&cmd=undo_apply">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="undo apply">
+    </form> <br>
+  </div>
+</div>
+
 
 
 

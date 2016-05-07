@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require bootstrap-theme
  *= require_self
  */
 
@@ -32,7 +33,7 @@ body {
 .container {
   font-size: 9px;
 }
-pre, pre pre{
+pre, pre pre, .pre{
   color: white;
   background-color: black;
   margin: -30px -15px -45px -15px;
@@ -55,7 +56,7 @@ pre, pre pre{
   font-size: 20px;
   margin: 5px;
 }
-#stats {
+.stats {
   width: 100%;
   border: 1px solid white;
   background-color: black;

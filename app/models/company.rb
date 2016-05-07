@@ -9,16 +9,16 @@ class Company < ApplicationRecord
   end
 
   def self.applied
-    where("applied IS NOT NULL")
+    where("applied IS NOT NULL").where("(applied = '') IS FALSE")
   end
   def self.skipped
-    where("skip IS NOT NULL")
+    where("skip IS NOT NULL").where("(skip = '') IS FALSE")
   end
   def self.todo
-    where("todo IS NOT NULL")
+    where("todo IS NOT NULL").where("(todo = '') IS FALSE")
   end
   def self.rejected
-    where("rejected IS NOT NULL")
+    where("rejected IS NOT NULL").where("(rejected = '') IS FALSE")
   end
   def self.nonblank
     applied |\
@@ -35,7 +35,7 @@ class Company < ApplicationRecord
 
   def status
     [
-      :todo, :skip, :rejected, :applied, :notlaughing
+      :todo, :skip, :rejected, :applied, :notlaughing, :starred
     ].reduce({}) do |hash, attr|
       val = send(attr)
       if val
