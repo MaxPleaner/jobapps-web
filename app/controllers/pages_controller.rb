@@ -78,9 +78,9 @@ class PagesController < ApplicationController
     when "quick_rejected"
       @company.update(rejected: "true", todo: nil)
     when "skip_with_note"
-      @company.update(skip: generic_params[:update_value])
+      @company.update(skip: generic_params[:update_value], todo: nil)
     when "apply_with_note"
-      @company.update(applied: generic_params[:update_value])
+      @company.update(applied: generic_params[:update_value], todo: nil)
     when "todo_with_note"
       @company.update(todo: generic_params[:update_value])
     when "not_laughing"
