@@ -8,6 +8,23 @@ class Company < ApplicationRecord
     end
   end
 
+  def self.search(query)
+    return [] if query.blank?
+    match_names = FuzzyMatch.new(
+      all.pluck(:name), must_match_groupings: true
+    ).find_all_with_score(query).map(&:first)
+    match_records = where(name: match_names)
+    results = match_records.sort_by do |company|
+      match_names.index company.name
+    end.first(20).map do |company|
+      { "name" => company.name, "id" => company.id }
+    end
+    results
+    # Alternative way to find records by ids
+    # and preserve ordering:
+      # Something.find(array_of_ids).index_by(&:id).values_at(*array_of_ids)
+  end
+
   def self.applied
     where("applied IS NOT NULL").where("(applied = '') IS FALSE")
   end

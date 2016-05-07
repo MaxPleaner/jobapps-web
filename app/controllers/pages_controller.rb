@@ -60,6 +60,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def search
+    flash[:search_results] = Company.search(params[:query])
+    redirect_to "/"
+  end
+
   def update
     @company = Company.find_by(id: generic_params[:id])
     cmd = generic_params[:cmd]

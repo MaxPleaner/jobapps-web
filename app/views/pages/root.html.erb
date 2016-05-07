@@ -46,6 +46,27 @@
     <!-- </div> -->
 </div>
 <br>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <form class="button pseudobutton " action="/search" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input class="large-text" type="text" name="query">
+        <input type="submit" value="search">
+      </form>
+    </div>
+    <% if flash[:search_results] %>
+      <div class="col-xs-12">
+        <div class="stats">
+          <i>search results</i> <br>
+          <% flash[:search_results].each do |res| %>
+            <a class="large-text button"  href="/id=<%= res["id"] %>"><%= res["name"] %></a>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <div class="row">
     <div class="col-xs-12">
       <% stats_string = "<i>stats</i><br><div class='statistic'>#{@percentage_completed} completed</div><div class='statistic'>#{@todos_count} todos </div><div class='statistic'>#{@application_count} applied </div><div class='statistic'>#{@skipped_count} skipped </div><div class='statistic'>#{Company.blank.count} remaining </div>" %>

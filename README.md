@@ -95,6 +95,7 @@ heroku open;
   - `GET /` (root action - handles most HTML views)
   - `POST /update` (update action: redirects to corresponding HTML page)
   - `POST /category_toggler` (HTML view to toggle categories' visibility)
+  - `GET /search` (redirects back and sets `flash[:search_results]`)
 - the [awesome_print](https://github.com/michaeldv/awesome_print) provides a few helpful methods:
   - `Object.ai(html: true)` produces a html-formatted snapshot of an object.
   - `ap <object>` is a prettier alternative to `puts`
