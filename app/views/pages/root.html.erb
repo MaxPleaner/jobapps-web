@@ -122,16 +122,16 @@
 <!--  -->
 
   <% if session["only_todos"] %>
-    <% page_name = "only todos" %>
+    <% page_name = "showing todos" %>
     <% companies_query = Company.todo %>
   <% elsif session["most_recent_skips"] %>
-    <% page_name = "skipped" %>
+    <% page_name = "showing skipped" %>
     <% companies_query = Company.skipped %>
   <% elsif session["no_filter"] %>
-    <% page_name = "all" %>
+    <% page_name = "showing all" %>
     <% companies_query = Company.all %>
   <% else %>
-    <% page_name = "blanks" %>
+    <% page_name = "showing blanks" %>
     <% companies_query = Company.blank %>
   <% end %>
 
@@ -152,14 +152,19 @@
   </div>
 <% end %>
 
+  <% previous_id = companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id %>
+  <% previous_name = Company.find_by(id: previous_id)&.name %>
+  <% next_id = companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>
+  <% next_name = Company.find_by(id: next_id)&.name %>
+
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id %>"><span class="button">Previous company (query: "<%= page_name %>")</span></a> <br>      
+      <a href="/?id=<%= previous_id %>"><span class="button">Previous company: <%= previous_name %> (<%= page_name %>)</span></a> <br>      
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>"><span class="button">Next company (query: "<%= page_name %>")</span></a> <br>
+      <a href="/?id=<%= next_id %>"><span class="button">Next company: <%= next_name %> (<%= page_name %>)</span></a> <br>
     </div>
   </div>
   <br>
