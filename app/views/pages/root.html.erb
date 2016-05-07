@@ -83,7 +83,7 @@
   <input type="submit" value="# to show">
 </form> <br> <br>
 
-  <% @most_recent_skips.each do |company| %>
+  <% @most_recent_skips.reverse_each do |company| %>
     <pre class="company">
       <a href="/?id=<%= company.id %>"><%= raw company.attributes.ai(html: true).html_safe %></a>
       <%#= raw company.attributes.ai(html: true).html_safe %>
