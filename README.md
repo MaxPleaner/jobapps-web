@@ -112,6 +112,11 @@ heroku open;
 - Autoscroll option (stored in `session`) brings the users focus to the content instantly (reducing the need for manual scrolling)
 - Categories can be toggled on/off. This works using a dynamic `default_scope` on the `Company` model. 
 
+## Todo
+
+- Search for companies
+- yaml exports
+
 ## Note
 
 I hope to keep this repo working out-the-box (except for the whole get-yaml-lists-of-companies thing). If there are any issues, please _raise an issue_. 

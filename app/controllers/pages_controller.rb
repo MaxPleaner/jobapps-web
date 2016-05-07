@@ -104,7 +104,7 @@ class PagesController < ApplicationController
       session["recently_edited_companies"] << @company.status.merge(
         "id" => @company.id
       )
-      session["recently_edited_companies"].pop if session["recently_edited_companies"].length > 5
+      session["recently_edited_companies"] = session["recently_edited_companies"][1..-1] if session["recently_edited_companies"].length > 5
     end
     if add_company
       if @company.persisted?
