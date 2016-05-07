@@ -100,11 +100,14 @@ heroku open;
   - `ap <object>` is a prettier alternative to `puts`
 - There are no initializers, rake tasks, or tests yet. A bit of `awesome_print` customization is done in [config/application.rb](config/application.rb)
 
-## Note
+## Updates / Features
 
-The UI probably looks really wacky, but I've intentionally set some of the most-used buttons to have massive font sizes so I can easily press them on my tablet.
-
-
-## GIF / Proof
-
-![usage gif](https://raw.githubusercontent.com/maxpleaner/jobapps-web/master/usage.gif)
+- the UI is updated so it is almost tolerable
+- Switch between query views: todos, blanks, skips, or all companies. This setting is stored in `session`
+- Statistics: percent completion, todos count, applied, count, skip count, blank count
+- Recently edited companies list
+- Add company form
+- Previous/Next company buttons
+- Forms to update records
+- Autoscroll option (stored in `session`) brings the users focus to the content instantly (reducing the need for manual scrolling)
+- Categories can be toggled on/off. This works using a dynamic `default_scope` on the `Company` model. 
