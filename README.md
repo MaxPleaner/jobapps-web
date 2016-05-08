@@ -99,7 +99,12 @@ heroku open;
 - the [awesome_print](https://github.com/michaeldv/awesome_print) provides a few helpful methods:
   - `Object.ai(html: true)` produces a html-formatted snapshot of an object.
   - `ap <object>` is a prettier alternative to `puts`
-- There are no initializers, rake tasks, or tests yet. A bit of `awesome_print` customization is done in [config/application.rb](config/application.rb)
+- There are no initializers or tests yet. A bit of `awesome_print` customization is done in [config/application.rb](config/application.rb).
+
+There are a few rake tasks:  
+- `backup_production_database` syncs the local db with the production data
+- `backup_database_to_yaml` backups the local db to yaml
+- `import_database_from_yaml` loads yaml files in `/backup` into the local db. Basically the same as the `db/seeds.rb` but works with activerecord yaml dumps.
 
 ## Updates / Features
 
@@ -112,11 +117,14 @@ heroku open;
 - Forms to update records
 - Autoscroll option (stored in `session`) brings the users focus to the content instantly (reducing the need for manual scrolling)
 - Categories can be toggled on/off. This works using a dynamic `default_scope` on the `Company` model. 
+- Search for companies
+- Rake task to sync local db with Heroku
+- Rake task to backup local db to YAML
+- Rake task to import YAML dump into local db
 
 ## Todo
 
-- Search for companies
-- yaml exports
+- responses tracker
 
 ## Note
 
