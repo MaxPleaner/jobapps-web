@@ -1,5 +1,7 @@
 class Company < ApplicationRecord
 
+  has_many :responses
+
   default_scope do
     if Category.where(hidden: true).any?
       where("category NOT IN (?)", Category.where(hidden: true).pluck(:name))

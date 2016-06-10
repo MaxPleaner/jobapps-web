@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  content: MyText
+  pinned: false
+
+two:
+  company_id: 1
+  content: MyText
+  pinned: false
