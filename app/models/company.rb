@@ -1,5 +1,7 @@
 class Company < ApplicationRecord
 
+  validates :name, uniqueness: true
+
   has_many :responses
 
   default_scope do

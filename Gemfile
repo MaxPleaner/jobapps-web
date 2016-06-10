@@ -53,3 +53,5 @@ gem "awesome_print"
 gem 'rails_12factor', group: :production
 
 gem "fuzzy_match"
+
+gem 'colored'
