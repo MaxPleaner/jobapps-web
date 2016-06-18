@@ -3,6 +3,8 @@ require_relative 'boot'
 require 'rails/all'
 require 'yaml'
 
+require "./lib/find_job_listings.rb"
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)

@@ -1,4 +1,32 @@
 class PagesController < ApplicationController
+
+  def get_indeed_listings
+    FindJobListings::IndeedAPI.new.jobs(start: 0, limit: 50, search_term: 'software')\
+    .each do |listing|
+      Company.create(
+        name: company[:company],
+        desc: company[:location] + " - " + company[:description] + " - " + company[:url],
+        jobs: company[:jobtitle],
+        category: "indeed"
+      )
+    end
+  end
+
+  def get_angellist_listings
+  end
+
+  def get_stackoverflow_listings
+    FindJobListings::StackOverflow_API.new.jobs(start: 0, limit: 50, search_term: 'software')\
+    .each do |listing|
+      Company.create(
+        name: company[:title],
+        desc: company[:description] + " - " + company[:location],
+        jobs: company[:link],
+        category: "indeed"
+      )
+     redirect_to :back
+  end
+
   def root
     if generic_params[:autoscroll] == "on"
       session["autoscroll"] = true
