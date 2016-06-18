@@ -1,14 +1,17 @@
 class PagesController < ApplicationController
 
   def get_indeed_listings
-    FindJobListings::IndeedAPI.new.jobs(start: 0, limit: 50, search_term: 'software')\
-    .each do |listing|
-      Company.create(
-        name: company[:company],
-        desc: company[:location] + " - " + company[:description] + " - " + company[:url],
-        jobs: company[:jobtitle],
-        category: "indeed"
-      )
+    0.upto(7).to_a.each do |i| # get 7 pages
+      FindJobListings::Indeed_API.new.jobs(
+        start: 25 * i, limit: 25, search_term: 'software'
+      ).each do |company|
+        Company.create(
+          name: company[:company],
+          desc: company[:location] + " - " + company[:description] + " - " + company[:url],
+          jobs: company[:jobtitle],
+          category: "indeed"
+        )
+      end
     end
     redirect_to :back
   end
@@ -17,8 +20,9 @@ class PagesController < ApplicationController
   end
 
   def get_stackoverflow_listings
-    FindJobListings::StackOverflow_API.new.jobs(start: 0, limit: 50, search_term: 'software')\
-    .each do |listing|
+    FindJobListings::StackOverflow_API.new.jobs(
+      start: (0), limit: 50, search_term: 'software'
+    )&.each do |company|
       Company.create(
         name: company[:title],
         desc: company[:description] + " - " + company[:location],

@@ -16,3 +16,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 db/seeds/yml
+
+
+db/manual_companies.yml
+
+
