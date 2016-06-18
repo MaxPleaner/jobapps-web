@@ -10,6 +10,7 @@ class PagesController < ApplicationController
         category: "indeed"
       )
     end
+    redirect_to :back
   end
 
   def get_angellist_listings
@@ -24,7 +25,8 @@ class PagesController < ApplicationController
         jobs: company[:link],
         category: "indeed"
       )
-     redirect_to :back
+    end
+    redirect_to :back
   end
 
   def root
