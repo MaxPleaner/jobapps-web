@@ -1,7 +1,6 @@
 require 'active_support/all'
 require 'json'
 require "indeed-ruby"
-require 'byebug'
 require 'awesome_print'
 require 'nokogiri'
 require 'open-uri'
