@@ -122,27 +122,6 @@
 <!--  -->
 
 <% elsif @company && !@company.persisted? %>
-
-
-<!--  -->
-<!-- New Company -->
-<!--  -->
-  <form class="large-text" action="/update?cmd=add_company" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="text" name="name" value="<%= @company.name %>" placeholder="name"> <br>
-    <input type="text" name="desc" value="<%= @company.desc %>" placeholder="description"> <br>
-    <input type="text" name="jobs" value="<%= @company.jobs %>" placeholder="jobs"> <br>
-    <input type="text" name="applied" value="<%= @company.applied %>" placeholder="applied">  <br>
-    <input type="text" name="rejected" value="<%= @company.rejected %>" placeholder="rejected"> <br>
-    <input type="text" name="skip" value="<%= @company.skip %>" placeholder="skip"> <br>
-    <input type="text" name="todo" value="<%= @company.todo %>" placeholder="todo"> <br>
-    <input type="text" name="category" value="<%= @company.category %>" placeholder="category"> <br>
-    <input type="submit" value="add company">
-  </form>
-
-<!--  -->
-<!--  -->
-
 <% else %>
 
 <!--  -->
@@ -340,7 +319,22 @@
 
 
 <% end %>
-
+<!--  -->
+<!-- New Company -->
+<!--  -->
+  <% @company = Company.new %>
+  <form class="large-text" action="/update?cmd=add_company" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="name" value="<%= @company.name %>" placeholder="name"> <br>
+    <input type="text" name="desc" value="<%= @company.desc %>" placeholder="description"> <br>
+    <input type="text" name="jobs" value="<%= @company.jobs %>" placeholder="jobs"> <br>
+    <input type="text" name="applied" value="<%= @company.applied %>" placeholder="applied">  <br>
+    <input type="text" name="rejected" value="<%= @company.rejected %>" placeholder="rejected"> <br>
+    <input type="text" name="skip" value="<%= @company.skip %>" placeholder="skip"> <br>
+    <input type="text" name="todo" value="<%= @company.todo %>" placeholder="todo"> <br>
+    <input type="text" name="category" value="<%= @company.category %>" placeholder="category"> <br>
+    <input type="submit" value="add company">
+  </form>
 
 <br>
 <br>
@@ -356,3 +350,5 @@
   })
 <% end %>
 </script>
+
+

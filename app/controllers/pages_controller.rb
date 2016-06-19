@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def get_indeed_listings
+    Category.find_or_create_by(name: "indeed")
     0.upto(7).to_a.each do |i| # get 7 pages
       FindJobListings::Indeed_API.new.jobs(
         start: 25 * i, limit: 25, search_term: 'software'
@@ -20,10 +21,11 @@ class PagesController < ApplicationController
   end
 
   def get_stackoverflow_listings
+    Category.find_or_create_by(name: "stackoverflow")
     FindJobListings::StackOverflow_API.new.jobs(
       start: (0), limit: 50, search_term: 'software'
     )&.each do |company|
-      Company.create(
+      company = Company.create(
         name: company[:title],
         desc: company[:description] + " - " + company[:location],
         jobs: company[:link],
@@ -107,6 +109,7 @@ class PagesController < ApplicationController
     when "add_company"
       add_company = true
       @company = Company.create(company_params)
+      @category = Category.find_or_create_by(name: @company.category)
     when "set_category"
       @company.update(category: generic_params[:update_value])
     when "quick_skip"
