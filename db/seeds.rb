@@ -14,7 +14,6 @@
       category: filename.split("/")[-1].split(".yml").join
     )
   end
-end
 
 Company.select(:category).distinct.pluck(:category).each do |category|
   Category.create(name: category, hidden: false)
