@@ -5,12 +5,12 @@
     <input type="hidden" name="id" value="<%= @company.id%>">
   <% end %>
   <input type="text" name="name" value="<%= @company.name %>" placeholder="name"> <br>
-  <input type="text" name="desc" value="<%= @company.desc %>" placeholder="description"> <br>
-  <input type="text" name="jobs" value="<%= @company.jobs %>" placeholder="jobs"> <br>
-  <input type="text" name="applied" value="<%= @company.applied %>" placeholder="applied">  <br>
-  <input type="text" name="rejected" value="<%= @company.rejected %>" placeholder="rejected"> <br>
-  <input type="text" name="skip" value="<%= @company.skip %>" placeholder="skip"> <br>
-  <input type="text" name="todo" value="<%= @company.todo %>" placeholder="todo"> <br>
+  <textarea name="desc" placeholder="description"><%= @company.desc %></textarea> <br>
+  <textarea name="jobs" placeholder="jobs"><%= @company.jobs %></textarea> <br>
+  <textarea name="applied" placeholder="applied"><%= @company.applied %></textarea> <br>
+  <textarea name="rejected" placeholder="rejected"><%= @company.rejected %></textarea> <br>
+  <textarea name="skip" placeholder="skip"><%= @company.skip %></textarea> <br>
+  <textarea name="todo" placeholder="todo"><%= @company.todo %></textarea> <br>
   <input type="text" name="category" value="<%= @company.category %>" placeholder="category"> <br>
   <input type="submit" value="<%= @company.persisted? ? 'edit company' : 'add company' %>">
 </form>
