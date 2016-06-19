@@ -20,4 +20,4 @@ db/seeds/yml
 
 db/manual_companies.yml
 
-
+/backup/*

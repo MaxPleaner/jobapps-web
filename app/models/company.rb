@@ -26,7 +26,7 @@ class Company < ApplicationRecord
   end
 
   def self.applied
-    where("applied IS NOT NULL").where("(applied = '') IS FALSE")
+    where("applied IS NOT NULL").where("(applied = '') IS FALSE").notrejected
   end
   def self.skipped
     where("skip IS NOT NULL").where("(skip = '') IS FALSE")
@@ -36,6 +36,9 @@ class Company < ApplicationRecord
   end
   def self.rejected
     where("rejected IS NOT NULL").where("(rejected = '') IS FALSE")
+  end
+  def self.notrejected
+    where("rejected IS NULL OR rejected = '' ")
   end
   def self.nonblank
     applied |\
@@ -63,30 +66,6 @@ class Company < ApplicationRecord
     end
   end
 
-  def name=(val)
-    super(val || "")
-  end
-  def desc=(val)
-    super(val || "")
-  end
-  def applied=(val)
-    super(val || "")
-  end
-  def skip=(val)
-    super(val || "")
-  end
-  def rejected=(val)
-    super(val || "")
-  end
-  def notlaughing=(val)
-    super(val || "")
-  end
-  def category=(val)
-    super(val || "")
-  end
-  def jobs=(val)
-    super(val || "")
-  end
   def starred=(val)
     super(val || false)
   end

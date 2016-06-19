@@ -1,0 +1,1605 @@
+-e ---
+- id: 349
+  name: US_DigitalService
+  desc: ...
+  applied: https://www.whitehouse.gov/digital/united-states-digital-service/apply
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2016-06-19 21:24:06.930944000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2016-06-19 21:24:06.930944000 Z
+    zone: *2
+    time: *3
+  category: various
+  jobs: 
+  starred: 
+- id: 350
+  name: StreamSets
+  desc: ...
+  applied: https://www.streamsets.com/careers/?gh_jid=98278
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2016-06-19 21:24:06.939230000 Z
+    zone: *2
+    time: *4
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2016-06-19 21:24:06.939230000 Z
+    zone: *2
+    time: *5
+  category: various
+  jobs: 
+  starred: 
+- id: 351
+  name: Aspera
+  desc: ...
+  applied: http://asperasoft.com/company/careers/
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2016-06-19 21:24:06.945514000 Z
+    zone: *2
+    time: *6
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &7 2016-06-19 21:24:06.945514000 Z
+    zone: *2
+    time: *7
+  category: various
+  jobs: 
+  starred: 
+- id: 352
+  name: Paradata
+  desc: ...
+  applied: http://paradata.io/careers/careers-at-paradata
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &8 2016-06-19 21:24:06.951585000 Z
+    zone: *2
+    time: *8
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &9 2016-06-19 21:24:06.951585000 Z
+    zone: *2
+    time: *9
+  category: various
+  jobs: 
+  starred: 
+- id: 353
+  name: Summon
+  desc: ...
+  applied: http://instantcab.com/careers
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &10 2016-06-19 21:24:06.957977000 Z
+    zone: *2
+    time: *10
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &11 2016-06-19 21:24:06.957977000 Z
+    zone: *2
+    time: *11
+  category: various
+  jobs: 
+  starred: 
+- id: 354
+  name: Cintric
+  desc: ...
+  applied: https://www.opusforwork.com/faq/
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &12 2016-06-19 21:24:06.970385000 Z
+    zone: *2
+    time: *12
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &13 2016-06-19 21:24:06.970385000 Z
+    zone: *2
+    time: *13
+  category: various
+  jobs: 
+  starred: 
+- id: 355
+  name: RemixMedia
+  desc: ...
+  applied: http://www.remixmediainc.com/careers/
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &14 2016-06-19 21:24:06.978611000 Z
+    zone: *2
+    time: *14
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &15 2016-06-19 21:24:06.978611000 Z
+    zone: *2
+    time: *15
+  category: various
+  jobs: 
+  starred: 
+- id: 413
+  name: Angelloop
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &16 2016-06-19 21:24:07.356380000 Z
+    zone: *2
+    time: *16
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &17 2016-06-19 21:24:07.356380000 Z
+    zone: *2
+    time: *17
+  category: various
+  jobs: 
+  starred: 
+- id: 340
+  name: NimbleCollective
+  desc: ...
+  applied: http://www.nimblecollective.com/careers/back.html
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &18 2016-06-19 21:24:06.864027000 Z
+    zone: *2
+    time: *18
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &19 2016-06-19 21:24:06.864027000 Z
+    zone: *2
+    time: *19
+  category: various
+  jobs: 
+  starred: 
+- id: 341
+  name: OpusForWork
+  desc: ...
+  applied: https://www.opusforwork.com/faq/
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &20 2016-06-19 21:24:06.873425000 Z
+    zone: *2
+    time: *20
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &21 2016-06-19 21:24:06.873425000 Z
+    zone: *2
+    time: *21
+  category: various
+  jobs: 
+  starred: 
+- id: 342
+  name: BeanSprock
+  desc: recruiters
+  applied: https://www.beansprock.com/user/jobs#/user/jobs
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &22 2016-06-19 21:24:06.879808000 Z
+    zone: *2
+    time: *22
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &23 2016-06-19 21:24:06.879808000 Z
+    zone: *2
+    time: *23
+  category: various
+  jobs: 
+  starred: 
+- id: 411
+  name: Euclid
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &24 2016-06-19 21:24:07.339031000 Z
+    zone: *2
+    time: *24
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &25 2016-06-19 21:24:07.339031000 Z
+    zone: *2
+    time: *25
+  category: various
+  jobs: 
+  starred: 
+- id: 343
+  name: Exygy
+  desc: non-profit webapps
+  applied: http://exygy.com/careers/#web-application-developer engineering-jobs@exygy.com
+  todo: 
+  skip: 
+  rejected: I believe so, unfortunately
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &26 2016-06-19 21:24:06.886188000 Z
+    zone: *2
+    time: *26
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &27 2016-06-19 21:24:06.886188000 Z
+    zone: *2
+    time: *27
+  category: various
+  jobs: 
+  starred: 
+- id: 344
+  name: Appcelerator
+  desc: ...
+  applied: http://app.jobvite.com/CompanyJobs/Careers.aspx?c=qF49Vfwx&j=oOhUYfwH&page=Apply&v=1
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &28 2016-06-19 21:24:06.894697000 Z
+    zone: *2
+    time: *28
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &29 2016-06-19 21:24:06.894697000 Z
+    zone: *2
+    time: *29
+  category: various
+  jobs: 
+  starred: 
+- id: 345
+  name: InstartLogic
+  desc: ...
+  applied: http://careers.jobscore.com/job_seeker/apply2/quick_apply?job_id=cB7Bvu-jGr44PAiGakhP3Q
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &30 2016-06-19 21:24:06.901387000 Z
+    zone: *2
+    time: *30
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &31 2016-06-19 21:24:06.901387000 Z
+    zone: *2
+    time: *31
+  category: various
+  jobs: 
+  starred: 
+- id: 346
+  name: NatureBox
+  desc: ...
+  applied: https://naturebox.com/jobs
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &32 2016-06-19 21:24:06.911984000 Z
+    zone: *2
+    time: *32
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &33 2016-06-19 21:24:06.911984000 Z
+    zone: *2
+    time: *33
+  category: various
+  jobs: 
+  starred: 
+- id: 347
+  name: VestedFinance
+  desc: ...
+  applied: https://www.linkedin.com/company/vested-finance?trk=job_view_topcard_company_name
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &34 2016-06-19 21:24:06.918381000 Z
+    zone: *2
+    time: *34
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &35 2016-06-19 21:24:06.918381000 Z
+    zone: *2
+    time: *35
+  category: various
+  jobs: 
+  starred: 
+- id: 348
+  name: Shelf
+  desc: ...
+  applied: https://angel.co/shelf-com/jobs/20507-full-stack-engineer-founding-team
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &36 2016-06-19 21:24:06.924692000 Z
+    zone: *2
+    time: *36
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &37 2016-06-19 21:24:06.924692000 Z
+    zone: *2
+    time: *37
+  category: various
+  jobs: 
+  starred: 
+- id: 412
+  name: VonChurch
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &38 2016-06-19 21:24:07.347364000 Z
+    zone: *2
+    time: *38
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &39 2016-06-19 21:24:07.347364000 Z
+    zone: *2
+    time: *39
+  category: various
+  jobs: 
+  starred: 
+- id: 356
+  name: LongGame
+  desc: ...
+  applied: https://angel.co/long-game/jobs/81522-software-engineer
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &40 2016-06-19 21:24:06.984921000 Z
+    zone: *2
+    time: *40
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &41 2016-06-19 21:24:06.984921000 Z
+    zone: *2
+    time: *41
+  category: various
+  jobs: 
+  starred: 
+- id: 357
+  name: GoogleVentures
+  desc: ...
+  applied: https://angel.co/googleventures/jobs/9787-ruby-developer-for-a-google-ventures-funded-startup
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &42 2016-06-19 21:24:06.991226000 Z
+    zone: *2
+    time: *42
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &43 2016-06-19 21:24:06.991226000 Z
+    zone: *2
+    time: *43
+  category: various
+  jobs: 
+  starred: 
+- id: 358
+  name: Vrse
+  desc: ...
+  applied: https://jobs.lever.co/vrse/adf9152f-200c-419f-baaa-0d031da971ff/apply
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &44 2016-06-19 21:24:06.997404000 Z
+    zone: *2
+    time: *44
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &45 2016-06-19 21:24:06.997404000 Z
+    zone: *2
+    time: *45
+  category: various
+  jobs: 
+  starred: 
+- id: 359
+  name: YardClub
+  desc: ...
+  applied: https://www.yardclub.com/careers
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &46 2016-06-19 21:24:07.003787000 Z
+    zone: *2
+    time: *46
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &47 2016-06-19 21:24:07.003787000 Z
+    zone: *2
+    time: *47
+  category: various
+  jobs: 
+  starred: 
+- id: 360
+  name: Xconic
+  desc: ...
+  applied: http://xconic.com/career/
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &48 2016-06-19 21:24:07.009921000 Z
+    zone: *2
+    time: *48
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &49 2016-06-19 21:24:07.009921000 Z
+    zone: *2
+    time: *49
+  category: various
+  jobs: 
+  starred: 
+- id: 361
+  name: Endless
+  desc: ...
+  applied: https://endlessm.com/about-us/#row-4
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &50 2016-06-19 21:24:07.016250000 Z
+    zone: *2
+    time: *50
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &51 2016-06-19 21:24:07.016250000 Z
+    zone: *2
+    time: *51
+  category: various
+  jobs: 
+  starred: 
+- id: 362
+  name: DigitalGlobe
+  desc: ...
+  applied: https://digitalglobe.csod.com/ATS/CareerSite/Note.aspx?s=%5e%5e%5efAZCiuYZtsGVWxPllefIQg%3d%3d
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &52 2016-06-19 21:24:07.022641000 Z
+    zone: *2
+    time: *52
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &53 2016-06-19 21:24:07.022641000 Z
+    zone: *2
+    time: *53
+  category: various
+  jobs: 
+  starred: 
+- id: 363
+  name: CarrumHealth
+  desc: ...
+  applied: https://angel.co/carrum-health/jobs/70973-full-stack-developer
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &54 2016-06-19 21:24:07.028898000 Z
+    zone: *2
+    time: *54
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &55 2016-06-19 21:24:07.028898000 Z
+    zone: *2
+    time: *55
+  category: various
+  jobs: 
+  starred: 
+- id: 364
+  name: Presence
+  desc: a consultancy
+  applied: eric@presencepg.com
+  todo: should get back to them, he wanted me to learn D3 and react
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &56 2016-06-19 21:24:07.035081000 Z
+    zone: *2
+    time: *56
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &57 2016-06-19 21:24:07.035081000 Z
+    zone: *2
+    time: *57
+  category: various
+  jobs: 
+  starred: 
+- id: 365
+  name: OpenDoor
+  desc: ...
+  applied: https://boards.greenhouse.io/opendoor/jobs/62701#.VfvEnN8SrUI
+  todo: sent me a coding challenge
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &58 2016-06-19 21:24:07.041247000 Z
+    zone: *2
+    time: *58
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &59 2016-06-19 21:24:07.041247000 Z
+    zone: *2
+    time: *59
+  category: various
+  jobs: 
+  starred: 
+- id: 366
+  name: Remind
+  desc: ...
+  applied: https://boards.greenhouse.io/remind/jobs/44803?gh_jid9. IXL - =44803#.Veq1R98SrUI
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &60 2016-06-19 21:24:07.047470000 Z
+    zone: *2
+    time: *60
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &61 2016-06-19 21:24:07.047470000 Z
+    zone: *2
+    time: *61
+  category: various
+  jobs: 
+  starred: 
+- id: 367
+  name: Tripping
+  desc: ...
+  applied: https://www.tripping.com/careers/full-stack-engineer
+  todo: sent me a coding challenge
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &62 2016-06-19 21:24:07.053912000 Z
+    zone: *2
+    time: *62
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &63 2016-06-19 21:24:07.053912000 Z
+    zone: *2
+    time: *63
+  category: various
+  jobs: 
+  starred: 
+- id: 368
+  name: StitchFix
+  desc: ...
+  applied: http://progress.appacademy.io/jobberwocky#/companies/3194
+  todo: missed phone screen already ... try again?
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &64 2016-06-19 21:24:07.060286000 Z
+    zone: *2
+    time: *64
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &65 2016-06-19 21:24:07.060286000 Z
+    zone: *2
+    time: *65
+  category: various
+  jobs: 
+  starred: 
+- id: 369
+  name: TrueAndCo
+  desc: idea-like shop online
+  applied: https://trueandco.com/jobs
+  todo: they expressed interest in phone screen
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &66 2016-06-19 21:24:07.066416000 Z
+    zone: *2
+    time: *66
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &67 2016-06-19 21:24:07.066416000 Z
+    zone: *2
+    time: *67
+  category: various
+  jobs: 
+  starred: 
+- id: 370
+  name: Doximity
+  desc: social network for doctors
+  applied: https://doximity.theresumator.com/apply/jobs/confirm/applicant/job_20110221154518_SF7DR1BH3DJDD3YV?
+  todo: they expressed interest in coding challenge
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &68 2016-06-19 21:24:07.072924000 Z
+    zone: *2
+    time: *68
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &69 2016-06-19 21:24:07.072924000 Z
+    zone: *2
+    time: *69
+  category: various
+  jobs: 
+  starred: 
+- id: 371
+  name: ThoughtWorks
+  desc: international consultancy
+  applied: http://www.thoughtworks.com/jobs/87402
+  todo: do their coding challenge (learn Java)
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &70 2016-06-19 21:24:07.079087000 Z
+    zone: *2
+    time: *70
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &71 2016-06-19 21:24:07.079087000 Z
+    zone: *2
+    time: *71
+  category: various
+  jobs: 
+  starred: 
+- id: 372
+  name: RealScout
+  desc: ...
+  applied: chris@realscout.com
+  todo: 
+  skip: 
+  rejected: they didn't like my coding challenge
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &72 2016-06-19 21:24:07.085220000 Z
+    zone: *2
+    time: *72
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &73 2016-06-19 21:24:07.085220000 Z
+    zone: *2
+    time: *73
+  category: various
+  jobs: 
+  starred: 
+- id: 373
+  name: KnightMozillaFellowship
+  desc: ...
+  applied: https://opennews.org/what/fellowships/thanks/
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &74 2016-06-19 21:24:07.091550000 Z
+    zone: *2
+    time: *74
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &75 2016-06-19 21:24:07.091550000 Z
+    zone: *2
+    time: *75
+  category: various
+  jobs: 
+  starred: 
+- id: 374
+  name: Instacart
+  desc: ...
+  applied: https://boards.greenhouse.io/instacart/jobs/89738?t=rkf7dx#.VedluN8SrUI
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &76 2016-06-19 21:24:07.097784000 Z
+    zone: *2
+    time: *76
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &77 2016-06-19 21:24:07.097784000 Z
+    zone: *2
+    time: *77
+  category: various
+  jobs: 
+  starred: 
+- id: 375
+  name: Breeze
+  desc: ...
+  applied: https://jobs.lever.co/breeze/8f84acc4-f7ef-4dc3-9b08-b26ff119c553/apply
+  todo: 
+  skip: 
+  rejected: true (but who cares)
+  notlaughing: these guys are really persistent marketers
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &78 2016-06-19 21:24:07.104392000 Z
+    zone: *2
+    time: *78
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &79 2016-06-19 21:24:07.104392000 Z
+    zone: *2
+    time: *79
+  category: various
+  jobs: 
+  starred: 
+- id: 376
+  name: Glassdoor
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &80 2016-06-19 21:24:07.110794000 Z
+    zone: *2
+    time: *80
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &81 2016-06-19 21:24:07.110794000 Z
+    zone: *2
+    time: *81
+  category: various
+  jobs: 
+  starred: 
+- id: 377
+  name: Checkr
+  desc: from hacker news whos hiring list
+  applied: https://boards.greenhouse.io/checkr/jobs/78417/confirmation?t=3ixlca
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &82 2016-06-19 21:24:07.117076000 Z
+    zone: *2
+    time: *82
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &83 2016-06-19 21:24:07.117076000 Z
+    zone: *2
+    time: *83
+  category: various
+  jobs: 
+  starred: 
+- id: 378
+  name: Bonanza
+  desc: ...
+  applied: from hacker new whos hiring http://www.bonanza.com/jobs/7
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &84 2016-06-19 21:24:07.123621000 Z
+    zone: *2
+    time: *84
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &85 2016-06-19 21:24:07.123621000 Z
+    zone: *2
+    time: *85
+  category: various
+  jobs: 
+  starred: 
+- id: 379
+  name: blurb
+  desc: ...
+  applied: http://careers.stackoverflow.com/jobs/97445/software-engineer-ror-for-rockstar-self-blurb
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &86 2016-06-19 21:24:07.129945000 Z
+    zone: *2
+    time: *86
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &87 2016-06-19 21:24:07.129945000 Z
+    zone: *2
+    time: *87
+  category: various
+  jobs: 
+  starred: 
+- id: 380
+  name: Boxes
+  desc: ...
+  applied: http://careers.stackoverflow.com/jobs/93838/senior-ruby-on-rails-engineer-boxes?searchTerm=ruby
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &88 2016-06-19 21:24:07.136167000 Z
+    zone: *2
+    time: *88
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &89 2016-06-19 21:24:07.136167000 Z
+    zone: *2
+    time: *89
+  category: various
+  jobs: 
+  starred: 
+- id: 381
+  name: GoodEggs
+  desc: ...
+  applied: https://www.goodeggs.com/about/jobs?gh_jid=79474
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &90 2016-06-19 21:24:07.142321000 Z
+    zone: *2
+    time: *90
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &91 2016-06-19 21:24:07.142321000 Z
+    zone: *2
+    time: *91
+  category: various
+  jobs: 
+  starred: 
+- id: 382
+  name: Chute
+  desc: ...
+  applied: http://chute.theresumator.com/apply/rerxtx
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &92 2016-06-19 21:24:07.148628000 Z
+    zone: *2
+    time: *92
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &93 2016-06-19 21:24:07.148628000 Z
+    zone: *2
+    time: *93
+  category: various
+  jobs: 
+  starred: 
+- id: 383
+  name: TrueLink
+  desc: ...
+  applied: https://www.truelinkfinancial.com/careers-positions/full-stack-web-developer-rails-stack
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &94 2016-06-19 21:24:07.156782000 Z
+    zone: *2
+    time: *94
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &95 2016-06-19 21:24:07.156782000 Z
+    zone: *2
+    time: *95
+  category: various
+  jobs: 
+  starred: 
+- id: 384
+  name: IFTT
+  desc: ...
+  applied: https://ifttt.com/jobs
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &96 2016-06-19 21:24:07.163265000 Z
+    zone: *2
+    time: *96
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &97 2016-06-19 21:24:07.163265000 Z
+    zone: *2
+    time: *97
+  category: various
+  jobs: 
+  starred: 
+- id: 385
+  name: Tout
+  desc: ...
+  applied: https://www.smartrecruiters.com/oneclick/profile/mobile
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &98 2016-06-19 21:24:07.169473000 Z
+    zone: *2
+    time: *98
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &99 2016-06-19 21:24:07.169473000 Z
+    zone: *2
+    time: *99
+  category: various
+  jobs: 
+  starred: 
+- id: 386
+  name: PublicInterestNetwork
+  desc: ...
+  applied: from idealist http://publicinterestnetwork.org/page/pin/apply/application-thank-you
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &100 2016-06-19 21:24:07.175872000 Z
+    zone: *2
+    time: *100
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &101 2016-06-19 21:24:07.175872000 Z
+    zone: *2
+    time: *101
+  category: various
+  jobs: 
+  starred: 
+- id: 387
+  name: Asana
+  desc: project tracking software
+  applied: t
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &102 2016-06-19 21:24:07.182217000 Z
+    zone: *2
+    time: *102
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &103 2016-06-19 21:24:07.182217000 Z
+    zone: *2
+    time: *103
+  category: various
+  jobs: 
+  starred: 
+- id: 388
+  name: StrategicEmploymentPartners
+  desc: ...
+  applied: http://www.bosmaxhire.net/cp/editembed.aspx?applynow=1
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &104 2016-06-19 21:24:07.188504000 Z
+    zone: *2
+    time: *104
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &105 2016-06-19 21:24:07.188504000 Z
+    zone: *2
+    time: *105
+  category: various
+  jobs: 
+  starred: 
+- id: 389
+  name: Honest
+  desc: ...
+  applied: http://thehonestcompany.applytojob.com/apply/confirm/job_20150912003654_F8PIVQ9JPMCANVLL
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &106 2016-06-19 21:24:07.194725000 Z
+    zone: *2
+    time: *106
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &107 2016-06-19 21:24:07.194725000 Z
+    zone: *2
+    time: *107
+  category: various
+  jobs: 
+  starred: 
+- id: 390
+  name: RobertHalf
+  desc: ...
+  applied: recruiters
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &108 2016-06-19 21:24:07.201305000 Z
+    zone: *2
+    time: *108
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &109 2016-06-19 21:24:07.201305000 Z
+    zone: *2
+    time: *109
+  category: various
+  jobs: 
+  starred: 
+- id: 391
+  name: Lob
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &110 2016-06-19 21:24:07.207483000 Z
+    zone: *2
+    time: *110
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &111 2016-06-19 21:24:07.207483000 Z
+    zone: *2
+    time: *111
+  category: various
+  jobs: 
+  starred: 
+- id: 392
+  name: FundingCircle
+  desc: ...
+  applied: https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qmQ9Vfw0&j=ohWK1fwI&s=Indeed&page=Apply
+  todo: follow up on coding challenge
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &112 2016-06-19 21:24:07.213818000 Z
+    zone: *2
+    time: *112
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &113 2016-06-19 21:24:07.213818000 Z
+    zone: *2
+    time: *113
+  category: various
+  jobs: 
+  starred: 
+- id: 393
+  name: Coinbase
+  desc: ...
+  applied: https://www.coinbase.com/careers
+  todo: 
+  skip: 
+  rejected: t
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &114 2016-06-19 21:24:07.219987000 Z
+    zone: *2
+    time: *114
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &115 2016-06-19 21:24:07.219987000 Z
+    zone: *2
+    time: *115
+  category: various
+  jobs: 
+  starred: 
+- id: 394
+  name: UpCounsel
+  desc: ...
+  applied: twice already
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &116 2016-06-19 21:24:07.226241000 Z
+    zone: *2
+    time: *116
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &117 2016-06-19 21:24:07.226241000 Z
+    zone: *2
+    time: *117
+  category: various
+  jobs: 
+  starred: 
+- id: 395
+  name: 3DRobotics
+  desc: ...
+  applied: http://3dr.applytojob.com/apply/job_20150630021452_E7RGVCKOPWPSIYYW/Full-Stack-Web-Software-Engineer?source=INDE
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &118 2016-06-19 21:24:07.232694000 Z
+    zone: *2
+    time: *118
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &119 2016-06-19 21:24:07.232694000 Z
+    zone: *2
+    time: *119
+  category: various
+  jobs: 
+  starred: 
+- id: 396
+  name: NelsonJobs
+  desc: ...
+  applied: http://jobs.nelsonjobs.com/Job/IT+Technical+Analyst-San+Francisco%2c+CA-Ruby+on+Rails+Developers+TECH+54446.aspx?pb=ttl&utm_source=Indeed&utm_medium=organic&utm_campaign=Indeed
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &120 2016-06-19 21:24:07.238749000 Z
+    zone: *2
+    time: *120
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &121 2016-06-19 21:24:07.238749000 Z
+    zone: *2
+    time: *121
+  category: various
+  jobs: 
+  starred: 
+- id: 397
+  name: RockYou
+  desc: ...
+  applied: http://rockyou.com/about/careers/?gnk=job&gni=8a7886654e8a4770014e8dcaa2825804&gns=Indeed
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &122 2016-06-19 21:24:07.245140000 Z
+    zone: *2
+    time: *122
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &123 2016-06-19 21:24:07.245140000 Z
+    zone: *2
+    time: *123
+  category: various
+  jobs: 
+  starred: 
+- id: 398
+  name: Gametime
+  desc: ...
+  applied: https://jobs.lever.co/gametime/d79cdfe8-55ed-40e6-98ea-dcb78b6fa979/thanks
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &124 2016-06-19 21:24:07.251340000 Z
+    zone: *2
+    time: *124
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &125 2016-06-19 21:24:07.251340000 Z
+    zone: *2
+    time: *125
+  category: various
+  jobs: 
+  starred: 
+- id: 399
+  name: JobSpring
+  desc: ...
+  applied: http://www.jobspringpartners.com/tech-jobs/san-francisco-ca/ruby-on-rails/junior-ruby-on-rails-developer/239648?utm_source=Indeed&utm_medium=organic&utm_campaign=Indeed
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &126 2016-06-19 21:24:07.257563000 Z
+    zone: *2
+    time: *126
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &127 2016-06-19 21:24:07.257563000 Z
+    zone: *2
+    time: *127
+  category: various
+  jobs: 
+  starred: 
+- id: 400
+  name: 90Seconds
+  desc: ...
+  applied: http://www.indeed.com/viewjob?jk=fa8197779876e107&qd=MaeQbrnqC3yLZiphol9CVcEO2rfgmOwnKwsflLIKFn73SislHJPvZJQGsl5gmtp8MtDkvW81YR6rYV5ZndT_w6GZa1GT9hWwRpRa0R0o5o41Vu4aS9dH_tvzuwb-B6Jr&atk=1a1hh7uf4b9pc898&utm_source=publisher&utm_medium=organic_listings&utm_campaign=affiliate
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &128 2016-06-19 21:24:07.263763000 Z
+    zone: *2
+    time: *128
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &129 2016-06-19 21:24:07.263763000 Z
+    zone: *2
+    time: *129
+  category: various
+  jobs: 
+  starred: 
+- id: 401
+  name: FutureAdvisor
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &130 2016-06-19 21:24:07.270144000 Z
+    zone: *2
+    time: *130
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &131 2016-06-19 21:24:07.270144000 Z
+    zone: *2
+    time: *131
+  category: various
+  jobs: 
+  starred: 
+- id: 402
+  name: Ubertal
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &132 2016-06-19 21:24:07.278792000 Z
+    zone: *2
+    time: *132
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &133 2016-06-19 21:24:07.278792000 Z
+    zone: *2
+    time: *133
+  category: various
+  jobs: 
+  starred: 
+- id: 403
+  name: PennyPop
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &134 2016-06-19 21:24:07.285123000 Z
+    zone: *2
+    time: *134
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &135 2016-06-19 21:24:07.285123000 Z
+    zone: *2
+    time: *135
+  category: various
+  jobs: 
+  starred: 
+- id: 404
+  name: Fabric
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &136 2016-06-19 21:24:07.291555000 Z
+    zone: *2
+    time: *136
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &137 2016-06-19 21:24:07.291555000 Z
+    zone: *2
+    time: *137
+  category: various
+  jobs: 
+  starred: 
+- id: 405
+  name: HealthRight
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &138 2016-06-19 21:24:07.297879000 Z
+    zone: *2
+    time: *138
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &139 2016-06-19 21:24:07.297879000 Z
+    zone: *2
+    time: *139
+  category: various
+  jobs: 
+  starred: 
+- id: 406
+  name: Crushpath
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &140 2016-06-19 21:24:07.304088000 Z
+    zone: *2
+    time: *140
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &141 2016-06-19 21:24:07.304088000 Z
+    zone: *2
+    time: *141
+  category: various
+  jobs: 
+  starred: 
+- id: 407
+  name: CoverHound
+  desc: ...
+  applied: through Talener recruiter
+  todo: follow up
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &142 2016-06-19 21:24:07.312032000 Z
+    zone: *2
+    time: *142
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &143 2016-06-19 21:24:07.312032000 Z
+    zone: *2
+    time: *143
+  category: various
+  jobs: 
+  starred: 
+- id: 408
+  name: BugCrowd
+  desc: ...
+  applied: t
+  todo: follow up on their ten-questions thing
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &144 2016-06-19 21:24:07.319933000 Z
+    zone: *2
+    time: *144
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &145 2016-06-19 21:24:07.319933000 Z
+    zone: *2
+    time: *145
+  category: various
+  jobs: 
+  starred: 
+- id: 409
+  name: GreatSchools
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &146 2016-06-19 21:24:07.326378000 Z
+    zone: *2
+    time: *146
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &147 2016-06-19 21:24:07.326378000 Z
+    zone: *2
+    time: *147
+  category: various
+  jobs: 
+  starred: 
+- id: 410
+  name: Gusto
+  desc: this was formerly ZenPayroll
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &148 2016-06-19 21:24:07.332906000 Z
+    zone: *2
+    time: *148
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &149 2016-06-19 21:24:07.332906000 Z
+    zone: *2
+    time: *149
+  category: various
+  jobs: 
+  starred: 
+- id: 414
+  name: Platphorm
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &150 2016-06-19 21:24:07.362669000 Z
+    zone: *2
+    time: *150
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &151 2016-06-19 21:24:07.362669000 Z
+    zone: *2
+    time: *151
+  category: various
+  jobs: 
+  starred: 
+- id: 415
+  name: OnboardIQ
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &152 2016-06-19 21:24:07.368984000 Z
+    zone: *2
+    time: *152
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &153 2016-06-19 21:24:07.368984000 Z
+    zone: *2
+    time: *153
+  category: various
+  jobs: 
+  starred: 
+- id: 416
+  name: MyTime
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &154 2016-06-19 21:24:07.375278000 Z
+    zone: *2
+    time: *154
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &155 2016-06-19 21:24:07.375278000 Z
+    zone: *2
+    time: *155
+  category: various
+  jobs: 
+  starred: 
+- id: 417
+  name: Foodspotting
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &156 2016-06-19 21:24:07.382484000 Z
+    zone: *2
+    time: *156
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &157 2016-06-19 21:24:07.382484000 Z
+    zone: *2
+    time: *157
+  category: various
+  jobs: 
+  starred: 
+- id: 418
+  name: Lookout
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &158 2016-06-19 21:24:07.389069000 Z
+    zone: *2
+    time: *158
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &159 2016-06-19 21:24:07.389069000 Z
+    zone: *2
+    time: *159
+  category: various
+  jobs: 
+  starred: 
+- id: 419
+  name: StyleLend
+  desc: ...
+  applied: t
+  todo: 
+  skip: 
+  rejected: 
+  notlaughing: 
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &160 2016-06-19 21:24:07.395346000 Z
+    zone: *2
+    time: *160
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &161 2016-06-19 21:24:07.395346000 Z
+    zone: *2
+    time: *161
+  category: various
+  jobs: 
+  starred: 
+
+-e ---
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+- true
+
