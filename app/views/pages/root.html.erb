@@ -323,7 +323,7 @@
 <!-- Edit / New Company -->
 <!--  -->
   <% if @company&.persisted? %>
-    <h4> Edit company company (<%= @company.name %>) </h4>
+    <h4> Edit company: <b><%= @company.name %><b> </h4>
     <%= render "company_form", company: @company %>
   <% end %>
   <h4> New company </h4>

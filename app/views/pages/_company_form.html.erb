@@ -12,5 +12,5 @@
   <input type="text" name="skip" value="<%= @company.skip %>" placeholder="skip"> <br>
   <input type="text" name="todo" value="<%= @company.todo %>" placeholder="todo"> <br>
   <input type="text" name="category" value="<%= @company.category %>" placeholder="category"> <br>
-  <input type="submit" value="add company">
+  <input type="submit" value="<%= @company.persisted? ? 'edit company' : 'add company' %>">
 </form>

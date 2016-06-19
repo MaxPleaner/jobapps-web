@@ -194,7 +194,9 @@ class PagesController < ApplicationController
   end
 
   def company_params
-    params.permit(:name, :desc, :applied, :rejected, :skip, :notlaughing, :todo, :jobs, :category)
+    params.permit(
+      :name, :desc, :applied, :rejected, :skip, :notlaughing, :todo, :jobs, :category
+    ).reject { |k,v| v.blank? }
   end
 
 end
