@@ -66,6 +66,14 @@ class Company < ApplicationRecord
     end
   end
 
+  def next
+    self.class.unscoped.where("id > ?", id).first
+  end
+
+  def prev
+    self.class.unscoped.where("id < ?", id).last
+  end
+
   def starred=(val)
     super(val || false)
   end

@@ -157,19 +157,17 @@
   </div>
 <% end %>
 
-  <% previous_id = companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id %>
-  <% previous_name = Company.find_by(id: previous_id)&.name %>
-  <% next_id = companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id %>
-  <% next_name = Company.find_by(id: next_id)&.name %>
+  <% @previous = @company.previous %>
+  <% @next = @company.next%>
 
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= previous_id %>"><span class="button">Previous company: <%= previous_name %> (<%= page_name %>)</span></a> <br>
+      <a href="/?id=<%= @previous.id %>"><span class="button">Previous company: <%= @previous.name %> (<%= page_name %>)</span></a> <br>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= next_id %>"><span class="button">Next company: <%= next_name %> (<%= page_name %>)</span></a> <br>
+      <a href="/?id=<%= @next.id %>"><span class="button">Next company: <%= @next.name %> (<%= page_name %>)</span></a> <br>
     </div>
   </div>
   <br>
