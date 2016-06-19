@@ -157,10 +157,10 @@
   </div>
 <% end %>
 
-  <% previous_id = companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id || @company.previous.id %>
-  <% previous_name = Company.find_by(id: previous_id)&.name || @company.previous.name %>
-  <% next_id = companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.next.id %>
-  <% next_name = Company.find_by(id: next_id)&.name || @company.next.name %>
+  <% previous_id = companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id || @company.get_previous.id %>
+  <% previous_name = Company.find_by(id: previous_id)&.name || @company.get_previous.name %>
+  <% next_id = companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next.id %>
+  <% next_name = Company.find_by(id: next_id)&.name || @company.get_next.name %>
 
 
 <div class="row">

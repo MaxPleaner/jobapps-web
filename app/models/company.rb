@@ -66,11 +66,11 @@ class Company < ApplicationRecord
     end
   end
 
-  def next
+  def get_next
     self.class.unscoped.where("id > ?", id).first
   end
 
-  def prev
+  def get_previous
     self.class.unscoped.where("id < ?", id).last
   end
 
