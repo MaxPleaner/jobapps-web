@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'pages/root'
 
-  get "/get_angellist_listings", to: "pages#get_angellist_listings"
   get "/get_indeed_listings", to: "pages#get_indeed_listings"
   get "/get_stackoverflow_listings", to: "pages#get_stackoverflow_listings"
 

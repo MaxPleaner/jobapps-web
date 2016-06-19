@@ -17,9 +17,6 @@ class PagesController < ApplicationController
     redirect_to :back
   end
 
-  def get_angellist_listings
-  end
-
   def get_stackoverflow_listings
     Category.find_or_create_by(name: "stackoverflow")
     FindJobListings::StackOverflow_API.new.jobs(
