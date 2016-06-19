@@ -14,6 +14,7 @@
 <div class="row scraper-buttons">
 <a href="get_indeed_listings">get indeed listings</a><br>
 <a href="get_stackoverflow_listings">get stackoverflow listings</a><br>
+<a href="add_yaml_list">import from yaml</a>
 </div>
 
 <div class="row">
@@ -25,11 +26,11 @@
       <% elsif session["no_filter"] %>
         <span class="pseudobutton button">
           Using no filter | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=only_todos">Show todos</a>
-        </span> 
+        </span>
       <% else %>
         <% if session["most_recent_skips"] %>
           <span class="pseudobutton button">
-            Showing skips (<a href="/?filter=most_recent_skips&most_recent_skip_count=<%= @most_recent_skip_count %>">index</a>) | <a href="/?filter=only_todos">Show todos</a> | 
+            Showing skips (<a href="/?filter=most_recent_skips&most_recent_skip_count=<%= @most_recent_skip_count %>">index</a>) | <a href="/?filter=only_todos">Show todos</a> |
             <a href="/?filter=not_only_todos">Show blanks</a> |
             <a href="/?filter=no_filter">No filter</a>
           </span>
@@ -38,21 +39,21 @@
             Showing blanks | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a>
           </span>
         <% end %>
-      <% end %> 
+      <% end %>
       <br>
       <% if session[:autoscroll] %>
         <a class="button" href="/?autoscroll=off">Turn Autoscroll Off</a>
       <% else %>
         <a class="button" href="/?autoscroll=on">Turn Autoscroll On</a>
-      <% end %> 
+      <% end %>
       <!-- <br> -->
-      <a class="button" href="/?filter=new_company">Add Company</a> 
+      <a class="button" href="/?filter=new_company">Add Company</a>
       <!-- <br> -->
       <a class="button" href="/category_toggler">toggle categories</a>
     <!-- </div> -->
 </div>
 <br>
-  
+
   <div class="row">
     <div class="col-xs-12">
       <form class="button pseudobutton " action="/search" method="POST">
@@ -85,7 +86,7 @@
       <br>
   </div><br>
 
-<!-- 
+<!--
 <hr> -->
 
 <% flash[:messages].each do |message| %>
@@ -149,7 +150,7 @@
         <% session[:recently_edited_companies].reverse_each do |attrs| %>
           <span class="company-attr">
             <a href="/?id=<%= attrs["id"] %>">
-              <%= attrs["name"] %>: <%= attrs.keys - ["name", "id"] %> 
+              <%= attrs["name"] %>: <%= attrs.keys - ["name", "id"] %>
             </a>
           </span> <br>
         <% end %>
@@ -165,7 +166,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <a href="/?id=<%= previous_id %>"><span class="button">Previous company: <%= previous_name %> (<%= page_name %>)</span></a> <br>      
+      <a href="/?id=<%= previous_id %>"><span class="button">Previous company: <%= previous_name %> (<%= page_name %>)</span></a> <br>
     </div>
   </div>
   <div class="row">
@@ -311,30 +312,22 @@
 
 
 
-  
-  
-  
+
+
+
 
 
 
 <% end %>
 <!--  -->
-<!-- New Company -->
+<!-- Edit / New Company -->
 <!--  -->
-  <% @company = Company.new %>
-  <form class="large-text" action="/update?cmd=add_company" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="text" name="name" value="<%= @company.name %>" placeholder="name"> <br>
-    <input type="text" name="desc" value="<%= @company.desc %>" placeholder="description"> <br>
-    <input type="text" name="jobs" value="<%= @company.jobs %>" placeholder="jobs"> <br>
-    <input type="text" name="applied" value="<%= @company.applied %>" placeholder="applied">  <br>
-    <input type="text" name="rejected" value="<%= @company.rejected %>" placeholder="rejected"> <br>
-    <input type="text" name="skip" value="<%= @company.skip %>" placeholder="skip"> <br>
-    <input type="text" name="todo" value="<%= @company.todo %>" placeholder="todo"> <br>
-    <input type="text" name="category" value="<%= @company.category %>" placeholder="category"> <br>
-    <input type="submit" value="add company">
-  </form>
-
+  <% if @company&.persisted? %>
+    <h4> Edit company company (<%= @company.name %>) </h4>
+    <%= render "company_form", company: @company %>
+  <% end %>
+  <h4> New company </h4>
+  <%= render "company_form", company: nil %>
 <br>
 <br>
 <br>

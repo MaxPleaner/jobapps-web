@@ -17,6 +17,32 @@ class PagesController < ApplicationController
     redirect_to :back
   end
 
+  def add_yaml_list
+    # renders a form
+  end
+
+  def save_yaml_list
+    @yaml = params[:yaml]
+    @category = params[:category]
+    Category.find_or_create_by(name: @category)
+    if @yaml && @category
+      companies = YAML.load(@yaml).map do |attrs|
+        Company.create(attrs.merge("category" => @category))
+      end
+      created_count = 0
+      companies.each do |company|
+        errors = company.errors.full_messages
+        if errors.any?
+          flash[:messages] << "error creating #{company.name} - #{errors}"
+        else
+          created_count += 1
+        end
+        flash[:messages] << "Created #{created_count} companies from YAML"
+      end
+    end
+    redirect_to "/"
+  end
+
   def get_stackoverflow_listings
     Category.find_or_create_by(name: "stackoverflow")
     FindJobListings::StackOverflow_API.new.jobs(
@@ -105,7 +131,8 @@ class PagesController < ApplicationController
     case cmd
     when "add_company"
       add_company = true
-      @company = Company.create(company_params)
+      @company&.update(company_params)
+      @company ||= Company.create(company_params)
       @category = Category.find_or_create_by(name: @company.category)
     when "set_category"
       @company.update(category: generic_params[:update_value])

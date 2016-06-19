@@ -1,0 +1,16 @@
+<div style="font-size: 18px;">
+  <h4 class="scraper-buttons"> <a href="/"> back </a> </h4>
+  <h4> Add companies from yml</h4> <hr>
+  <form action="save_yaml_list" method="POST">
+    <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
+    <input type="text" name="category" placeholder="category"> <br> <br>
+    <textarea name="yaml" cols="50" rows="10">
+---
+- name: company1
+  desc: decription1
+- name: company2
+  desc: description2
+    </textarea> <br>
+    <input type="submit" value="submit">
+  </form>
+</div>
