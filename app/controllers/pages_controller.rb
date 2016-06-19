@@ -84,7 +84,7 @@ class PagesController < ApplicationController
     if generic_params[:filter] && generic_params[:filter].eql?("new_company")
       @company = Company.new(flash["company"]) || Company.new
     elsif generic_params[:id]
-      @company = Company.find(generic_params[:id])
+      @company = Company.unscoped.find(generic_params[:id])
     else
       if session["no_filter"]
         @company = Company.first
@@ -102,7 +102,7 @@ class PagesController < ApplicationController
         unless @company
           @company = Company.first
           set_current_page("no_filter")
-          flash[:messages] << "No more blanks. Switching to no filter"
+          flash[:messages] << "No more blanks. Switching to no filter."
         end
       end
     end
@@ -126,7 +126,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    @company = Company.find_by(id: generic_params[:id])
+    @company = Company.unscoped.find_by(id: generic_params[:id])
     cmd = generic_params[:cmd]
     case cmd
     when "add_company"
