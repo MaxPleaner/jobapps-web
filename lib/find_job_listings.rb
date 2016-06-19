@@ -16,14 +16,14 @@ module FindJobListings
       raise(StandardError, "INDEED_PUBLISHER_NUMBER is not set") unless publisher_number
       @client = Indeed::Client.new(publisher_number)
 		end
-		def jobs(options={search_term:  nil, limit: nil, start: nil})
-			options[:search_term] &&(options[:q] = options.delete(:search_term))
+		def jobs(options={})
+			options[:search_term] && (options[:q] = options.delete(:search_term))
 			useful_data(client.search(defaults.merge(options))['results'])
 		end
 
     private
     def defaults
-			{ q: 'ruby', l: 'san francisco', limit: 20, start: 0, userip: '1.2.3.4',
+			{ q: 'software programmer developer javascript ruby', l: 'san francisco', limit: 20, start: 0, userip: '1.2.3.4',
 				useragent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)' +
                    'Ubuntu Chromium/44.0.2403.89 Chrome/44.0.2403.89 Safari/537.36'
 			}
@@ -45,7 +45,7 @@ module FindJobListings
 		def initialize
 			@base_url = "http://careers.stackoverflow.com/jobs/feed"
 		end
-		def jobs(options={limit: nil, start: nil, search_term: nil})
+		def jobs(options={})
 			options = defaults.merge(options)
       params_string = options.map{ |k,v| "#{k}=#{v}"}.join("&")
 			url = URI::encode( "#{base_url}?#{params_string}" )
@@ -64,7 +64,7 @@ module FindJobListings
 				range: 20,
 				limit: 2,
 				start: 0,
-				searchTerm: "ruby"
+				searchTerm: "software programmer developer ruby javascript"
 			}
 		end
 		def useful_data(items)
