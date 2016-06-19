@@ -81,6 +81,7 @@ class PagesController < ApplicationController
         end
       end
     end
+    @company ||= Company.new
   end
 
   def category_toggler
