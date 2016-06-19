@@ -11,9 +11,9 @@ class Company < ApplicationRecord
   def self.search(query)
     return [] if query.blank?
     match_names = FuzzyMatch.new(
-      all.pluck(:name), must_match_groupings: true
+      unscoped.all.pluck(:name), must_match_groupings: true
     ).find_all_with_score(query).map(&:first)
-    match_records = where(name: match_names)
+    match_records = unscoped.where(name: match_names)
     results = match_records.sort_by do |company|
       match_names.index company.name
     end.first(20).map do |company|
