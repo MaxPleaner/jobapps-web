@@ -27,7 +27,7 @@ class PagesController < ApplicationController
         name: company[:title],
         desc: company[:description] + " - " + company[:location],
         jobs: company[:link],
-        category: "indeed"
+        category: "stackoverflow"
       )
     end
     redirect_to :back
