@@ -3,14 +3,11 @@ task :backup_database_to_yaml => :environment do
    puts("tried to create backup/. Did not create if already exists")
   categories = Category.all
   categories.each do |category|
-      companies = category.companies.map(&:attributes).reduce({}) do |memo, (k,v)|
-        key_valid = (
-          k.in?([:id, "id", :created_at, "created_at", :updated_at, "updated_at"])\
-          || v.blank?
-        )
-        if key_valid
-            (memo[k] = v; memo)
-        else
+      companies = category.companies.map(&:attributes).map do |attrs|
+        attrs.reduce({}) do |memo, (k,v)|
+          memo[k] = v unless k.in?([
+            :id, "id", :created_at, "created_at", :updated_at, "updated_at"
+          ])|| v.blank?
           memo
         end
       end
