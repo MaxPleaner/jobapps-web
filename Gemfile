@@ -56,3 +56,4 @@ gem "open_uri_redirections"
 gem 'nokogiri'
 gem 'mechanize'
 gem 'selenium-webdriver'
+gem 'activerecord-session_store'
