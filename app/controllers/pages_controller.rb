@@ -117,7 +117,7 @@ class PagesController < ApplicationController
     @categories = Category.all.order(id: :desc)
     if generic_params[:cmd] && generic_params[:cmd].eql?("toggle")
       @category = Category.find_by(id: generic_params[:category_id])
-      @category.update(hidden: !@category.hidden)
+      unless @category.update(hidden: !@category.hidden)
       redirect_to "/category_toggler"
     else
       render "category_toggler"
@@ -137,35 +137,69 @@ class PagesController < ApplicationController
       add_company = true
       @company&.update(company_params)
       @company ||= Company.create(company_params)
-      @category = Category.find_or_create_by(name: @company.category)
+      if @company.persisted?
+        @category = Category.find_or_create_by(name: @company.category)
+      else
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "set_category"
-      @company.update(category: generic_params[:update_value])
+      if @company.update(category: generic_params[:update_value])
+        @category = Category.find_or_create_by(name: @company.category)
+      else
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "quick_skip"
-      @company.update(skip: "true", todo: nil)
+      unless @company.update(skip: "true", todo: nil)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "quick_apply"
-      @company.update(applied: "true", todo: nil)
+      unless @company.update(applied: "true", todo: nil)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "quick_todo"
-      @company.update(todo: "true")
+      unless @company.update(todo: "true")
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "quick_rejected"
-      @company.update(rejected: "true", todo: nil)
+      unless @company.update(rejected: "true", todo: nil)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "skip_with_note"
-      @company.update(skip: generic_params[:update_value], todo: nil)
+      unless @company.update(skip: generic_params[:update_value], todo: nil)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "apply_with_note"
-      @company.update(applied: generic_params[:update_value], todo: nil)
+      unless @company.update(applied: generic_params[:update_value], todo: nil)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "todo_with_note"
-      @company.update(todo: generic_params[:update_value])
+      unless @company.update(todo: generic_params[:update_value])
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "not_laughing"
-      @company.update(notlaughing: generic_params[:update_value])
+      unless @company.update(notlaughing: generic_params[:update_value])
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "undo_todo"
-      @company.update(todo: nil)
+      unless @company.update(todo: nil)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "undo_skip"
-      @company.update(skip: nil)
+      unless @company.update(skip: nil)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "star"
-      @company.update(starred: true)
+      unless @company.update(starred: true)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "unstar"
-      @company.update(starred: false)
+      unless @company.update(starred: false)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     when "undo_apply"
-      @company.update(applied: false)
+      unless @company.update(applied: false)
+        @company.errors.full_messages.each { |err| flash[:messages] << err}
+      end
     end
     if @company.persisted?
       session["recently_edited_companies"] ||= []
