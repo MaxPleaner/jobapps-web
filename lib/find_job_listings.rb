@@ -47,6 +47,7 @@ module FindJobListings
 		end
 		def jobs(options={})
 			options = defaults.merge(options)
+      options["searchTerm[]"] = options.delete(:searchTerm)
       params_string = options.map{ |k,v| "#{k}=#{v}"}.join("&")
 			url = URI::encode( "#{base_url}?#{params_string}" )
 			open(url, allow_redirections: :safe) { |results| @response_xml = results.read }
@@ -64,7 +65,7 @@ module FindJobListings
 				range: 20,
 				limit: 2,
 				start: 0,
-				searchTerm: "software programmer developer ruby javascript"
+				searchTerm: "software&searchTerm[]=programmer&searchTerm[]=developer&searchTerm[]=ruby&searchTerm[]=javascript"
 			}
 		end
 		def useful_data(items)
