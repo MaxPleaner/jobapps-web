@@ -70,6 +70,11 @@ Then run `rails server` and visit `localhost:3000`.
     jobs url: http://meat-labs.com/?jobs=javascript
 ```
 
+There are a few rake tasks:  
+- `backup_production_database` syncs the local db with the production data
+- `backup_database_to_yaml` backups the local db to yaml
+- `import_database_from_yaml` loads yaml files in `/backup` into the local db. Basically the same as the `db/seeds.rb` but works with activerecord yaml dumps.
+
 ## Deploying to Heroku
 
 The following script should suffice to get it running on Heroku:
@@ -85,10 +90,6 @@ heroku run config:set INDEED_PUBLISHER_NUMBER=123456789;
 heroku config:add LOG_LEVEL=DEBUG
 heroku open;
 ```
-There are a few rake tasks:  
-- `backup_production_database` syncs the local db with the production data
-- `backup_database_to_yaml` backups the local db to yaml
-- `import_database_from_yaml` loads yaml files in `/backup` into the local db. Basically the same as the `db/seeds.rb` but works with activerecord yaml dumps.
 
 ## Development History
 
