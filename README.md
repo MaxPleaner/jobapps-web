@@ -102,3 +102,7 @@ I've made a number of job application tracking systems. Each time I make one, I'
 ## Contributing:
 
 Please raise an issue if things aren't working correctly. I'm not saying this app is perfect, but bugs are bugs. 
+
+## Screenshots
+
+![screenshot1](/Screenshot 2016-06-20 at 10.57.30 AM.png)
