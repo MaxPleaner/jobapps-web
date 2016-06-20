@@ -75,6 +75,8 @@ class PagesController < ApplicationController
       set_current_page("most_recent_skips")
       @most_recent_skip_count = generic_params[:most_recent_skip_count] || session["most_recent_skip_count"] || 5
       session["most_recent_skip_count"] = @most_recent_skip_count
+    elsif filter && filter.eql?("starred")
+      set_current_page("starred")
     end
     @most_recent_skip_count = session["most_recent_skip_count"] || 5
     @percentage_completed = "#{((Company.nonblank.count.to_f / Company.count.to_f) * 100.to_f).round(2)}%"
@@ -88,6 +90,8 @@ class PagesController < ApplicationController
     else
       if session["no_filter"]
         @company = Company.first
+      elsif session["starred"]
+        @company = Company.unscoped.where(starred: true).first
       elsif session["only_todos"]
         @company = Company.todo.limit(1).first
         unless @company

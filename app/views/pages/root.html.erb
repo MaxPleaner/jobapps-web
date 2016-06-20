@@ -21,11 +21,15 @@
 <!--     <div class="col-xs-12"> -->
       <% if session["only_todos"] %>
         <span class="pseudobutton button">
-          Showing todos | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a>
+          Showing todos | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a> | <a href="/?filter=starred">Show starred</a>
         </span>
       <% elsif session["no_filter"] %>
         <span class="pseudobutton button">
-          Using no filter | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=only_todos">Show todos</a>
+          Using no filter | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=starred">Show starred</a>
+        </span>
+      <% elsif session["starred"] %>
+        <span class="pseudobutton button">
+          Showing starred | <a href="/?filter=not_only_todos">Show todos</a> | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=only_todos">Show todos</a>
         </span>
       <% else %>
         <% if session["most_recent_skips"] %>
@@ -135,6 +139,9 @@
   <% elsif session["no_filter"] %>
     <% page_name = "showing all" %>
     <% companies_query = Company.all %>
+  <% elsif session["starred"] %>
+    <% page_name = "showing starred" %>
+    <% companies_query = Company.unscoped.where(starred: true) %>
   <% else %>
     <% page_name = "showing blanks" %>
     <% companies_query = Company.blank %>

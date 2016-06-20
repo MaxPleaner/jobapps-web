@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
     {
       only_todos: page.eql?("only_todos"),
       no_filter: page.eql?("no_filter"),
-      most_recent_skips: page.eql?("most_recent_skips")
+      most_recent_skips: page.eql?("most_recent_skips"),
+      starred: page.eql?("starred")
     }.each do |k, v|
       session[k.to_s] = v
     end
