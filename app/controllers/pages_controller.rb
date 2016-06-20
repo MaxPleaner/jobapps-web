@@ -185,7 +185,7 @@ class PagesController < ApplicationController
         flash["company"] = @company.attributes
         redirect_to "/?filter=new_company"
       end
-    elsif generic_params[:next_id]
+    elsif !(generic_params[:next_id]).blank?
       redirect_to "/?id=#{generic_params[:next_id]}"
     else
       redirect_to "/?id=#{@company.id}"
