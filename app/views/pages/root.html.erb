@@ -165,10 +165,10 @@
   </div>
 <% end %>
 
-  <% previous_id = companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id || @company.get_previous&.id || @company.get_next&.id || @company.id %>
-  <% previous_name = Company.find_by(id: previous_id)&.name || @company.get_previous&.name || @company.get_next&.name || @company.name %>
-  <% next_id = companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next.id | @company.get_previous&.id || @company.id %>
-  <% next_name = Company.find_by(id: next_id)&.name || @company.get_next&.name || @company.get_previous&.id || @company.id %>
+  <% previous_id = companies_query.where("id < ?", @company.id).last&.id || companies_query.order(id: :desc).first&.id || @company.get_previous&.id || @company.get_next&.id || @company&.id %>
+  <% previous_name = Company.find_by(id: previous_id)&.name || @company.get_previous&.name || @company.get_next&.name || @company&.name %>
+  <% next_id = companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id | @company.get_previous&.id || @company.id %>
+  <% next_name = Company.find_by(id: next_id)&.name || @company.get_next&.name || @company.get_previous&.id || @company&.id %>
 
 
 <div class="row">
