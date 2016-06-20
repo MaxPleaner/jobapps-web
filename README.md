@@ -1,33 +1,59 @@
-## Introduction
+## About
 
-I have a project called "jobapps" which I've been repeatedly refactoring.
+This is a Rails app which is meant to help a job-seeker go through lists of companies, encouraging them to send out more job applications. It tracks the state of applications and can scrape job listings off Indeed and StackOverflow.
 
-I first wrote a ruby CLI using `loop` and `gets.chomp`.
+## How to use
 
-I eventually found the `ripl` gem and used it to build a [ruby_cli_skeleton](http://github.com/maxpleaner/ruby_cli_skeleton). I redid the jobapps program using this CLI skeleton and called it [job_tracker_cli](http://github.com/maxpleaner/job_tracker_cli).
+Requires Ruby 2.3 or greater, mainly because of the [safe navigation operator](https://bugs.ruby-lang.org/issues/11537)
 
-I then gave the project a third iteration, focusing on editable YAML files. This project is [jobapps](http://github.com/maxpleaner/jobapps). It still uses the `ruby_cli_skeleton`, but it focuses on using human-readable data serialization and text editors to work more productively. 
+```
+git clone https://github.com/maxpleaner/jobapps-web
+cd jobapps-web
+bundle install
+```
 
-One morning I wanted to apply to jobs but thought it was time my jobapps project got a web interface.
+Setup Postgres and configure [config/database.yml](config/database.yml) then run:
 
-## Setting up the companies database
+```
+rake db:create db:migrate
+```
 
-This web interface doesn't actually have a way to add companies.  I didn't need this feature because I already had YAML files listing 2500 local startups. _See the [http://github.com/maxpleaner/jobapps](http://github.com/maxpleaner/jobapps) for information on how to construct such a list_.
+If you want to use the Indeed scraper, [go to their publisher page](http://www.indeed.com/publisher), make an account, then go to the [xml job search](https://ads.indeed.com/jobroll/xmlfeed) page to find a publisher number. Export this into the environment:
 
-To add some companies, create a `db/seeds/yml` folder and put YAML files there. The name of the yaml file (i.e. `san_francisco` for `san_francisco.yml`) becomes the category for all companies the file contains. See [db/seeds.rb](db/seeds.rb) to inspect / edit the import script.
+```
+export INDEED_PUBLISHER_NUMBER=123456789
+```
 
-The required keys on each company object are `name` and `desc`. `category` is inferred from the filename. Optional keys are `applied`, `todo`, `skip`, `jobs`, `rejected`, and `notlaughing`. 
+This could go in `.bashrc` or something so that it doesn't need to be repeatedly run.
 
-The web application uses the following query methods to select companies:  
-- `Company.blank` (where `applied`, `todo`, `skip`, and `rejected` are all falsey)
-- `Company.nonblank` (where any of `applied`, `todo`, `skip`, or `rejected` are truthy)
-- `Company.applied` (where `applied` is truthy)
-- `Company.skipped` (where `skip` is truthy)
-- `Company.rejected` (where `rejected` is truthy)
-- `Company.todos` (where `todo` is truthy)
+Also export some environment variables for basic HTTP auth:
 
-See the following example of a yaml file:
+```
+export HTTP_USERNAME=admin
+export HTTP_PASSWORD=password
+```
 
+Then run `rails server` and visit `localhost:3000`. 
+
+## Features / Sitemap
+
+- Buttons to scrape listings from Indeed or StackOverflow. This currently searches for ruby / javascript programming jobs in san francisco, but you can configure the query in `lib/find_job_listings.rb`.
+- A page to import companies from a YAML list. 
+- Various 'filters' - applied, skipped, todos, starred
+- "autoscroll" button - will scroll down to the "action" part of the page
+- "toggle categories" button - pick which categories of companies are shown. _Warning_ this affects the default scope on companies, so if running a console when the server is also running, use `Company.unscoped.all` to _really_ get all the records.   
+- search button - this uses the [fuzzy_match](https://github.com/seamusabshere/fuzzy_match) gem. It is _not_ scoped by "toggle categories", and will consider every company name in the database. 
+- "statistics" - scoped by  "toggle categories", this shows how far the user has progressed through their current set.
+- "recently edited companies" should show the last 5 edits made. It is buggy though.
+- "previous company" and "next company" buttons
+- "quick action" buttons to one-click apply, skip, todo, or star. 
+- update forms for individual companies
+- new company form
+
+## Usage notes / other features
+- All companies should at least have `name`, `desc`, and `category` set.
+- Make sure to get YAML right the first time or back it up before importing. 
+- the `rake db:seed` command will look in the `db/seeds/yml/` folder for `<category_name>.yml` files containing lists of companies. See the following example of a yaml file:  
 ```yml
 ---
 - name: "ACME INK"
@@ -36,45 +62,17 @@ See the following example of a yaml file:
   skip: |
     I didn't apply to this job because I get seasick
 
-- name: "Company Two"
-  desc: "Illuminati"
-  jobs: "100K, Janitor"
-  skip: true
-
 - name: "Meat Labs"
   desc: "Mass Market Plant Lab"
   jobs: "101K Full-Stack Enginner"
   applied: |
     their food is so good
     jobs url: http://meat-labs.com/?jobs=javascript
-
-- name: "NSA"
-  desc: "Your favorite spy service"
-  jobs: "Microcontroller Engineer"
-  rejected: true
-  notlaughing: "failed the background check"
 ```
 
-## Running & Deploying the Rails App
+## Deploying to Heroku
 
-Please consider forking the project if you use it.
-
-This app is built with Rails 5. It uses the [safe navigation operator](https://bugs.ruby-lang.org/issues/11537), which requires Ruby 2.3 or greater. If you are using something greater than 2.3, you can run the app locally by commenting out the `ruby 2.3.0` line in the Gemfile. This line needs to present for Heroku to run the app though.
-
-Setting up locally
-
-```sh
-git clone https://github.com/maxpleaner/jobapps-web;
-cd jobapps-web;
-bundle;
-rake db:create db:migrate db:seed;
-export HTTP_USERNAME=admin;
-export HTTP_PASSWORD=password;
-rails s;
-
-```
-
-Deploying to Heroku.
+The following script should suffice to get it running on Heroku:
 
 ```sh
 heroku create;
@@ -83,49 +81,24 @@ heroku run rake db:migrate
 heroku run rake db:seed
 heroku run config:set HTTP_USERNAME=admin;
 heroku run config:set HTTP_USERNAME=password;
+heroku run config:set INDEED_PUBLISHER_NUMBER=123456789;
 heroku config:add LOG_LEVEL=DEBUG
 heroku open;
 ```
-
-## How the app is structured
-
-- HTTP basic auth via the `HTTP_USERNAME` and `HTTP_PASSWORD` environment variables
-- There's two models, `Company` and `Category`
-- There's a single controller, `PagesController`, which has a few routes:
-  - `GET /` (root action - handles most HTML views)
-  - `POST /update` (update action: redirects to corresponding HTML page)
-  - `POST /category_toggler` (HTML view to toggle categories' visibility)
-  - `GET /search` (redirects back and sets `flash[:search_results]`)
-- the [awesome_print](https://github.com/michaeldv/awesome_print) provides a few helpful methods:
-  - `Object.ai(html: true)` produces a html-formatted snapshot of an object.
-  - `ap <object>` is a prettier alternative to `puts`
-- There are no initializers or tests yet. A bit of `awesome_print` customization is done in [config/application.rb](config/application.rb).
-
 There are a few rake tasks:  
 - `backup_production_database` syncs the local db with the production data
 - `backup_database_to_yaml` backups the local db to yaml
 - `import_database_from_yaml` loads yaml files in `/backup` into the local db. Basically the same as the `db/seeds.rb` but works with activerecord yaml dumps.
 
-## Updates / Features
+## Development History
 
-- the UI is updated so it is almost tolerable
-- Switch between query views: todos, blanks, skips, or all companies. This setting is stored in `session`
-- Statistics: percent completion, todos count, applied, count, skip count, blank count
-- Recently edited companies list
-- Add company form
-- Previous/Next company buttons
-- Forms to update records
-- Autoscroll option (stored in `session`) brings the users focus to the content instantly (reducing the need for manual scrolling)
-- Categories can be toggled on/off. This works using a dynamic `default_scope` on the `Company` model. 
-- Search for companies
-- Rake task to sync local db with Heroku
-- Rake task to backup local db to YAML
-- Rake task to import YAML dump into local db
+I've made a number of job application tracking systems. Each time I make one, I'm improving the functionality from the previous iteration. 
 
-## Todo
+1. Initially, I had a primitive Ruby REPL which used `loop` and `gets.chomp`.
+2. I mostly scrapped this and redid it as [job_tracker_cli](https://github.com/maxpleaner/job_tracker_cli) using the `ripl` gem and my [ruby_cli_skeleton](https://github.com/maxpleaner/ruby_cli_skeleton) project.
+3. I used this for a little while, but got tired of doing so much writing in the command line. I decided to redo the project using yaml files and called it [jobapps](https://github.com/maxpleaner/jobapps). This application offered the REPL functionality of the previous versions, but also featured an AngelList scraper and I amassed a list of thousands of companies.
+4. This repo is the most recent iteration. It scraps the [ruby_cli_skeleton](https://github.com/maxpleaner/ruby_cli_skeleton) REPL in favor of Rails console, and foregoes YAML files in favor of SQL.
 
-- responses tracker
+## Contributing:
 
-## Note
-
-I hope to keep this repo working out-the-box (except for the whole get-yaml-lists-of-companies thing). If there are any issues, please _raise an issue_. 
+Please raise an issue if things aren't working correctly. I'm not saying this app is perfect, but bugs are bugs. 
