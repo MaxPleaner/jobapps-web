@@ -106,3 +106,6 @@ Please raise an issue if things aren't working correctly. I'm not saying this ap
 ## Screenshots
 
 ![screenshot1](/Screenshot 2016-06-20 at 10.57.30 AM.png)
+![screenshot2](/Screenshot 2016-06-20 at 10.57.40 AM.png)
+![screenshot3](/Screenshot 2016-06-20 at 10.57.53 AM.png)
+
