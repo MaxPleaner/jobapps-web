@@ -1,6 +1,6 @@
 ## About
 
-This is a Rails app which is meant to help a job-seeker go through lists of companies, encouraging them to send out more job applications. It tracks the state of applications and can scrape job listings off Indeed and StackOverflow.
+This is a Rails app which is meant to help a job-seeker go through lists of companies, encouraging them to send out more job applications. It tracks the state of applications and can scrape job listings off Indeed, StackOverflow, and RemoteOK.
 
 ## How to use
 
@@ -33,27 +33,27 @@ export HTTP_USERNAME=admin
 export HTTP_PASSWORD=password
 ```
 
-Then run `rails server` and visit `localhost:3000`. 
+Then run `rails server` and visit `localhost:3000`.
 
 ## Features / Sitemap
 
-- Buttons to scrape listings from Indeed or StackOverflow. This currently searches for ruby / javascript programming jobs in san francisco, but you can configure the query in `lib/find_job_listings.rb`.
-- A page to import companies from a YAML list. 
+- Buttons to scrape listings from Indeed, StackOverflow, or RemoteOK. For Indeed and StackOverflow, This currently searches for ruby / javascript programming jobs in san francisco, but you can configure the query in `lib/find_job_listings.rb`. RemoteOK just shows all listings. 
+- A page to import companies from a YAML list.
 - Various 'filters' - applied, skipped, todos, starred
 - "autoscroll" button - will scroll down to the "action" part of the page
-- "toggle categories" button - pick which categories of companies are shown. _Warning_ this affects the default scope on companies, so if running a console when the server is also running, use `Company.unscoped.all` to _really_ get all the records.   
-- search button - this uses the [fuzzy_match](https://github.com/seamusabshere/fuzzy_match) gem. It is _not_ scoped by "toggle categories", and will consider every company name in the database. 
+- "toggle categories" button - pick which categories of companies are shown. _Warning_ this affects the default scope on companies, so if running a console when the server is also running, use `Company.unscoped.all` to _really_ get all the records.
+- search button - this uses the [fuzzy_match](https://github.com/seamusabshere/fuzzy_match) gem. It is _not_ scoped by "toggle categories", and will consider every company name in the database.
 - "statistics" - scoped by  "toggle categories", this shows how far the user has progressed through their current set.
 - "recently edited companies" should show the last 5 edits made. It is buggy though.
 - "previous company" and "next company" buttons
-- "quick action" buttons to one-click apply, skip, todo, or star. 
+- "quick action" buttons to one-click apply, skip, todo, or star.
 - update forms for individual companies
 - new company form
 
 ## Usage notes / other features
 - All companies should at least have `name`, `desc`, and `category` set.
-- Make sure to get YAML right the first time or back it up before importing. 
-- the `rake db:seed` command will look in the `db/seeds/yml/` folder for `<category_name>.yml` files containing lists of companies. See the following example of a yaml file:  
+- Make sure to get YAML right the first time or back it up before importing.
+- the `rake db:seed` command will look in the `db/seeds/yml/` folder for `<category_name>.yml` files containing lists of companies. See the following example of a yaml file:
 ```yml
 ---
 - name: "ACME INK"
@@ -70,7 +70,7 @@ Then run `rails server` and visit `localhost:3000`.
     jobs url: http://meat-labs.com/?jobs=javascript
 ```
 
-There are a few rake tasks:  
+There are a few rake tasks:
 - `backup_production_database` syncs the local db with the production data
 - `backup_database_to_yaml` backups the local db to yaml
 - `import_database_from_yaml` loads yaml files in `/backup` into the local db. Basically the same as the `db/seeds.rb` but works with activerecord yaml dumps.
@@ -93,7 +93,7 @@ heroku open;
 
 ## Development History
 
-I've made a number of job application tracking systems. Each time I make one, I'm improving the functionality from the previous iteration. 
+I've made a number of job application tracking systems. Each time I make one, I'm improving the functionality from the previous iteration.
 
 1. Initially, I had a primitive Ruby REPL which used `loop` and `gets.chomp`.
 2. I mostly scrapped this and redid it as [job_tracker_cli](https://github.com/maxpleaner/job_tracker_cli) using the `ripl` gem and my [ruby_cli_skeleton](https://github.com/maxpleaner/ruby_cli_skeleton) project.
@@ -102,7 +102,7 @@ I've made a number of job application tracking systems. Each time I make one, I'
 
 ## Contributing:
 
-Please raise an issue if things aren't working correctly. I'm not saying this app is perfect, but bugs are bugs. 
+Please raise an issue if things aren't working correctly. I'm not saying this app is perfect, but bugs are bugs.
 
 ## Screenshots
 
