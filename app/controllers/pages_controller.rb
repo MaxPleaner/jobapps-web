@@ -1,5 +1,16 @@
 class PagesController < ApplicationController
 
+  def get_remoteok_listings
+    Category.find_or_create_by(name: "remoteok")
+    JSON.parse(`curl https://remoteok.io/index.json`).each do |listing|
+      Company.create(
+        name: listing["company"],
+        desc: "#{listing['position']} - #{listing["tags"].join(",")} - #{listing["description"]}",
+        category: "remoteok"
+      )
+    end
+    redirect_to :back
+  end
   def get_indeed_listings
     Category.find_or_create_by(name: "indeed")
     0.upto(7).to_a.each do |i| # get 7 pages
@@ -117,7 +128,7 @@ class PagesController < ApplicationController
     @categories = Category.all.order(id: :desc)
     if generic_params[:cmd] && generic_params[:cmd].eql?("toggle")
       @category = Category.find_by(id: generic_params[:category_id])
-      unless @category.update(hidden: !@category.hidden)
+      @category.update(hidden: !@category.hidden)
       redirect_to "/category_toggler"
     else
       render "category_toggler"
@@ -149,57 +160,31 @@ class PagesController < ApplicationController
         @company.errors.full_messages.each { |err| flash[:messages] << err}
       end
     when "quick_skip"
-      unless @company.update(skip: "true", todo: nil)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(skip: "true", todo: nil)
     when "quick_apply"
-      unless @company.update(applied: "true", todo: nil)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(applied: "true", todo: nil)
     when "quick_todo"
-      unless @company.update(todo: "true")
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(todo: "true")
     when "quick_rejected"
-      unless @company.update(rejected: "true", todo: nil)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(rejected: "true", todo: nil)
     when "skip_with_note"
-      unless @company.update(skip: generic_params[:update_value], todo: nil)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(skip: generic_params[:update_value], todo: nil)
     when "apply_with_note"
-      unless @company.update(applied: generic_params[:update_value], todo: nil)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(applied: generic_params[:update_value], todo: nil)
     when "todo_with_note"
-      unless @company.update(todo: generic_params[:update_value])
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(todo: generic_params[:update_value])
     when "not_laughing"
-      unless @company.update(notlaughing: generic_params[:update_value])
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(notlaughing: generic_params[:update_value])
     when "undo_todo"
-      unless @company.update(todo: nil)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(todo: nil)
     when "undo_skip"
-      unless @company.update(skip: nil)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(skip: nil)
     when "star"
-      unless @company.update(starred: true)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(starred: true)
     when "unstar"
-      unless @company.update(starred: false)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(starred: false)
     when "undo_apply"
-      unless @company.update(applied: false)
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
+      @company.update(applied: false)
     end
     if @company.persisted?
       session["recently_edited_companies"] ||= []
