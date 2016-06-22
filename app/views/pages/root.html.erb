@@ -1,25 +1,31 @@
 <br>
 <br>
 
-<!--  -->
-<!-- Top Menu (Nav Links) -->
-<!--  -->
-
 <div class="row">
-  <!-- <div class="col-xs-12"> -->
     <a class="button" href="/">root</a>
-  <!-- </div> -->
 </div>
 
 <div class="row scraper-buttons">
-<a href="get_indeed_listings">get indeed listings</a><br>
-<a href="get_stackoverflow_listings">get stackoverflow listings</a><br>
-  <a href="get_remoteok_listings">get remoteok listings</a><br>
-<a href="add_yaml_list">import from yaml</a>
+
+	<form action="get_indeed_listings" method="GET">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="submit" value="get indeed listings">
+		<input type="text" name="search_term" placeholder="search term">
+	</form> <br>
+
+	<form action="get_stackoverflow_listings" method="GET">
+	        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	        <input type="submit" value="get indeed listings">
+	        <input type="text" name="search_term" placeholder="search term">
+	</form>
+
+	<a href="get_remoteok_listings">get remoteok listings</a><br>
+
+	<a href="add_yaml_list">import from yaml</a>
+
 </div>
 
 <div class="row">
-<!--     <div class="col-xs-12"> -->
       <% if session["only_todos"] %>
         <span class="pseudobutton button">
           Showing todos | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a> | <a href="/?filter=starred">Show starred</a>
@@ -52,9 +58,7 @@
       <% else %>
         <a class="button" href="/?autoscroll=on">Turn Autoscroll On</a>
       <% end %>
-      <!-- <br> -->
       <a class="button" href="/category_toggler">toggle categories</a>
-    <!-- </div> -->
 </div>
 <br>
 
@@ -90,17 +94,11 @@
       <br>
   </div><br>
 
-<!--
-<hr> -->
-
 <% flash[:messages].each do |message| %>
   <pre class="flash-message">
     <%= message %>
   </pre>
 <% end %>
-
-<!--  -->
-<!--  -->
 
 <% if @most_recent_skips %>
 
@@ -121,9 +119,6 @@
       <%#= raw company.attributes.ai(html: true).html_safe %>
     </pre>
   <% end %>
-
-<!--  -->
-<!--  -->
 
 <% elsif @company && !@company.persisted? %>
 <% else %>
@@ -192,8 +187,6 @@
   </div>
   <br>
 
-
-
 <div class="row inline-forms">
 
       <% if @company.starred %>
@@ -212,34 +205,26 @@
         </form>
       <% end %>
 
-  <!-- <div class="col-xs-3"> -->
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_skip">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
       <input type="submit" value="skip & next">
     </form>
-  <!-- </div> -->
-  <!-- <div class="col-xs-3"> -->
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_apply">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
       <input type="submit" value="apply & next">
     </form>
-  <!-- </div> -->
-  <!-- <div class="col-xs-3"> -->
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_todo">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
       <input type="submit" value="todo & next">
     </form>
-  <!-- </div> -->
-  <!-- <div class="col-xs-3"> -->
     <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_rejected">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
       <input type="submit" value="rejected & next">
     </form>
-  <!-- </div> -->
 </div>
 
 <hr>
@@ -326,9 +311,6 @@
 
 
 <% end %>
-<!--  -->
-<!-- Edit / New Company -->
-<!--  -->
   <% if @company&.persisted? %>
     <h4> Edit company: <b><%= @company.name %><b> </h4>
     <%= render "company_form", company: @company %>

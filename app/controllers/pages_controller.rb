@@ -14,9 +14,9 @@ class PagesController < ApplicationController
   def get_indeed_listings
     Category.find_or_create_by(name: "indeed")
     0.upto(7).to_a.each do |i| # get 7 pages
-      FindJobListings::Indeed_API.new.jobs(
-        start: 25 * i, limit: 25, search_term: 'software'
-      ).each do |company|
+      job_query = { start: (25 * i), limit: 25 }
+      !params[:search_term].blank? && (job_query[:search_term] = params[:search_term])
+      FindJobListings::Indeed_API.new.jobs(job_query).each do |company|
         Company.create(
           name: company[:company],
           desc: company[:location] + " - " + company[:description] + " - " + company[:url],
@@ -56,9 +56,9 @@ class PagesController < ApplicationController
 
   def get_stackoverflow_listings
     Category.find_or_create_by(name: "stackoverflow")
-    FindJobListings::StackOverflow_API.new.jobs(
-      start: (0), limit: 50, search_term: 'software'
-    )&.each do |company|
+    job_query = { start: (0), limit: 50 }
+    !params[:search_term].blank? && (job_query[:search_term] = params[:search_term])
+    FindJobListings::StackOverflow_API.new.jobs(job_query)&.each do |company|
       company = Company.create(
         name: company[:title],
         desc: company[:description] + " - " + company[:location],
