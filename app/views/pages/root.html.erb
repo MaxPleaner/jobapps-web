@@ -10,13 +10,13 @@
 	<form action="get_indeed_listings" method="GET">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<input type="submit" value="get indeed listings">
-		<input type="text" name="search_term" placeholder="search term">
+		<input class='button' type="text" name="search_term" placeholder="search term">
 	</form> <br>
 
 	<form action="get_stackoverflow_listings" method="GET">
 	        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	        <input type="submit" value="get stackoverflow listings">
-	        <input type="text" name="search_term" placeholder="search term">
+	        <input type="submit"  value="get stackoverflow listings">
+	        <input type="text" class='button' name="search_term" placeholder="search term">
 	</form>
 
 	<a href="get_remoteok_listings">get remoteok listings</a><br>
