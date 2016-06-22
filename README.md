@@ -37,7 +37,7 @@ Then run `rails server` and visit `localhost:3000`.
 
 ## Features / Sitemap
 
-- Buttons to scrape listings from Indeed, StackOverflow, or RemoteOK. For Indeed and StackOverflow, This currently searches for ruby / javascript programming jobs in san francisco, but you can configure the query in `lib/find_job_listings.rb`. RemoteOK just shows all listings. 
+- Buttons to scrape listings from Indeed, StackOverflow, or RemoteOK. For Indeed and StackOverflow, This currently searches for ruby / javascript programming jobs in san francisco, but you can configure the query in `lib/find_job_listings.rb`. RemoteOK just shows all listings.
 - A page to import companies from a YAML list.
 - Various 'filters' - applied, skipped, todos, starred
 - "autoscroll" button - will scroll down to the "action" part of the page

@@ -57,7 +57,7 @@ class Company < ApplicationRecord
     [
       :todo, :skip, :rejected, :applied, :notlaughing, :starred
     ].reduce({}) do |hash, attr|
-      hash[:name] = name
+      hash["name"] = name
       val = send(attr)
       if val
         hash[attr] = val
