@@ -60,9 +60,9 @@ module FindJobListings
 
     private
 		def defaults
-			search_term = "soft
+			search_term = "ruby"
 			{
-				location: "ruby",
+				location: "San Francisco",
 				range: 20,
 				limit: 2,
 				start: 0,
