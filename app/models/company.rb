@@ -55,10 +55,10 @@ class Company < ApplicationRecord
 
   def status
     [
-      :todo, :skip, :rejected, :applied, :notlaughing, :starred
+      "todo", "skip", "rejected", "applied", "notlaughing", "starred"
     ].reduce({}) do |hash, attr|
       hash["name"] = name
-      val = send(attr)
+      val = send(attr.to_sym)
       if val
         hash[attr] = val
       end
