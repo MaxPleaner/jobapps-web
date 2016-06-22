@@ -1,0 +1,26 @@
+      <% if session["only_todos"] %>
+        <span class="pseudobutton button">
+          Showing todos | <a class="button" href="/?filter=not_only_todos">Show blanks</a> | <a class="button" href="/?filter=most_recent_skips">Show skips</a> | <a class="button" href="/?filter=no_filter">No filter</a> | <a class="button" href="/?filter=starred">Show starred</a>
+        </span>
+      <% elsif session["no_filter"] %>
+        <span class="pseudobutton button">
+          Using no filter | <a class="button" href="/?filter=not_only_todos">Show blanks</a> | <a class="button" href="/?filter=most_recent_skips">Show skips</a> | <a class="button" href="/?filter=only_todos">Show todos</a> | <a class="button" href="/?filter=starred">Show starred</a>
+        </span>
+      <% elsif session["starred"] %>
+        <span class="pseudobutton button">
+          Showing starred | <a class="button" href="/?filter=not_only_todos">Show all</a> | <a class="button" href="/?filter=not_only_todos">Show blanks</a> | <a class="button" href="/?filter=most_recent_skips">Show skips</a> | <a class="button" href="/?filter=only_todos">Show todos</a>
+        </span>
+      <% else %>
+        <% if session["most_recent_skips"] %>
+          <span class="pseudobutton button">
+            Showing skips (<a class="button" href="/?filter=most_recent_skips&most_recent_skip_count=<%= @most_recent_skip_count %>">index</a>) | <a class="button" href="/?filter=only_todos">Show todos</a> |
+            <a class="button" href="/?filter=not_only_todos">Show blanks</a> |
+            <a class="button" href="/?filter=no_filter">No filter</a> |
+            <a class="button" href="/?filter=starred">Show starred</a>
+          </span>
+        <% else %>
+          <span class="pseudobutton button">
+            Showing blanks | <a class="button" href="/?filter=only_todos">Show todos</a> | <a class="button" href="/?filter=most_recent_skips">Show skips</a> | <a class="button" href="/?filter=no_filter">No filter</a> | <a class="button" href="/?filter=starred">Show starred</a>
+          </span>
+        <% end %>
+      <% end %>

@@ -1,104 +1,44 @@
 <br>
 <br>
+<!-- hold your horses -->
 
-<div class="row">
-    <a class="button" href="/">root</a>
+<div id="rootLinkContainer" class="container">
+  <div class="row"><%= render "root_link" %></div>
 </div>
 
-<div class="row scraper-buttons">
-
-	<form action="get_indeed_listings" method="GET">
-		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		<input type="submit" value="get indeed listings">
-		<input class='button' type="text" name="search_term" placeholder="search term">
-	</form> <br>
-
-	<form action="get_stackoverflow_listings" method="GET">
-	        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	        <input type="submit"  value="get stackoverflow listings">
-	        <input type="text" class='button' name="search_term" placeholder="search term">
-	</form>
-
-	<a href="get_remoteok_listings">get remoteok listings</a><br>
-
-	<a href="add_yaml_list">import from yaml</a>
-
+<div id="statsContainer" class="container">
+  <div class="row"><%= render "stats" %></div>
 </div>
 
-<div class="row">
-      <% if session["only_todos"] %>
-        <span class="pseudobutton button">
-          Showing todos | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a> | <a href="/?filter=starred">Show starred</a>
-        </span>
-      <% elsif session["no_filter"] %>
-        <span class="pseudobutton button">
-          Using no filter | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=starred">Show starred</a>
-        </span>
-      <% elsif session["starred"] %>
-        <span class="pseudobutton button">
-          Showing starred | <a href="/?filter=not_only_todos">Show all</a> | <a href="/?filter=not_only_todos">Show blanks</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=only_todos">Show todos</a>
-        </span>
-      <% else %>
-        <% if session["most_recent_skips"] %>
-          <span class="pseudobutton button">
-            Showing skips (<a href="/?filter=most_recent_skips&most_recent_skip_count=<%= @most_recent_skip_count %>">index</a>) | <a href="/?filter=only_todos">Show todos</a> |
-            <a href="/?filter=not_only_todos">Show blanks</a> |
-            <a href="/?filter=no_filter">No filter</a> |
-            <a href="/?filter=starred">Show starred</a>
-          </span>
-        <% else %>
-          <span class="pseudobutton button">
-            Showing blanks | <a href="/?filter=only_todos">Show todos</a> | <a href="/?filter=most_recent_skips">Show skips</a> | <a href="/?filter=no_filter">No filter</a> | <a href="/?filter=starred">Show starred</a>
-          </span>
-        <% end %>
-      <% end %>
-      <br>
-      <% if session[:autoscroll] %>
-        <a class="button" href="/?autoscroll=off">Turn Autoscroll Off</a>
-      <% else %>
-        <a class="button" href="/?autoscroll=on">Turn Autoscroll On</a>
-      <% end %>
-      <a class="button" href="/category_toggler">toggle categories</a>
+<div id="scraperButtonsContainer" class="container">
+  <div class="row"><%= render "import_from_angellist_button" %></div>
+  <div class="row"><%= render "import_from_stackoverflow_button" %></div>
+  <div class="row"><%= render "import_from_remoteok_button" %></div>
 </div>
-<br>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <form class="button pseudobutton " action="/search" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input class="large-text" type="text" name="query">
-        <input type="submit" value="search">
-      </form>
-    </div>
-    <% if flash[:search_results] %>
-      <div class="col-xs-12">
-        <div class="stats">
-          <i>search results</i> <br>
-          <% flash[:search_results].each do |res| %>
-            <a class="large-text button"  href="/?id=<%= res["id"] %>"><%= res["name"] %></a>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div> <br>
+<div id="yamlImportContainer" class="container">
+  <div class="row"><%= render "import_from_yaml_button" %></div>
+</div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <% stats_string = "<i>stats</i><br><div class='statistic'>#{@percentage_completed} completed</div><div class='statistic'>#{@todos_count} todos </div><div class='statistic'>#{@application_count} applied </div><div class='statistic'>#{@skipped_count} skipped </div><div class='statistic'>#{Company.blank.count} remaining </div>" %>
-      <span class="stats">
-        <%= raw stats_string.html_safe %>
-      </span>
-    </div>
-      <br>
-      <br>
-      <br>
-  </div><br>
+<div id="filterOptionsContainer" class="container">
+  <div class="row"><%= render "filter_options" %></div>
+</div>
 
-<% flash[:messages].each do |message| %>
-  <pre class="flash-message">
-    <%= message %>
-  </pre>
-<% end %>
+<div id="autoscrollButtonContainer" class="container">
+    <div class="row"><%= render "autoscroll_button" %></div>
+</div>
+
+<div id="categoryTogglerContainer" class="container">
+  <div class="row"><%= render "category_toggler_button" %></div>
+</div>
+
+<div id="searchResultsContainer" class="container">
+  <div class="row"><%= render "search_results" %></div>
+</div>
+
+<div id="searchContainer" class="container">
+  <div class="row"><%= render "search" %></div>
+</div>
 
 <% if @most_recent_skips %>
 
