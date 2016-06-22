@@ -23,7 +23,7 @@ module FindJobListings
 
     private
     def defaults
-			{ q: 'software programmer developer javascript ruby', l: 'san francisco', limit: 20, start: 0, userip: '1.2.3.4',
+			{ q: 'ruby', l: 'san francisco', limit: 20, start: 0, userip: '1.2.3.4',
 				useragent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)' +
                    'Ubuntu Chromium/44.0.2403.89 Chrome/44.0.2403.89 Safari/537.36'
 			}
@@ -60,12 +60,14 @@ module FindJobListings
 
     private
 		def defaults
+			search_term = "soft
 			{
-				location: "San Francisco",
+				location: "ruby",
 				range: 20,
 				limit: 2,
 				start: 0,
-				searchTerm: "software&searchTerm[]=programmer&searchTerm[]=developer&searchTerm[]=ruby&searchTerm[]=javascript"
+#				searchTerm: "software&searchTerm[]=programmer&searchTerm[]=developer&searchTerm[]=ruby&searchTerm[]=javascript"
+				searchTerm: search_term
 			}
 		end
 		def useful_data(items)
