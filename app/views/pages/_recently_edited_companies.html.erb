@@ -1,16 +1,14 @@
 <% if session[:recently_edited_companies]&.any? %>
   <div class="row">
-    <div class="col-xs-12">
-      <div class="stats">
-        <i>recently edited companies</i><br>
-        <% session[:recently_edited_companies].reverse_each do |attrs| %>
-          <span class="company-attr">
-            <a href="/?id=<%= attrs["id"] %>">
-              <%= attrs["name"] %>: <%= attrs.keys - ["name", "id"] %>
-            </a>
-          </span> <br>
-        <% end %>
-      </div>
+    <div class="stats">
+      <i>recently edited companies</i><br>
+      <% session[:recently_edited_companies].reverse_each do |attrs| %>
+        <span class="company-attr">
+          <a href="/?id=<%= attrs["id"] %>">
+            <%= attrs["name"] %>: <%= attrs.keys - ["name", "id"] %>
+          </a>
+        </span> <br>
+      <% end %>
     </div>
-  </div><br>
+  </div>
 <% end %>

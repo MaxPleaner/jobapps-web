@@ -1,0 +1,5 @@
+<% if session[:autoscroll] %>
+  $( document ).on('turbolinks:load', function() {
+    $('body').scrollTo('.company');
+  })
+<% end %>

@@ -1,5 +1,15 @@
 class Company < ApplicationRecord
 
+  def name=(val)
+    val.is_a?(String) ? super(ERB::Util.escape_html(val)) : super(val)
+  end
+  def desc=(val)
+    val.is_a?(String) ? super(ERB::Util.escape_html(val)) : super(val)
+  end
+  def jobs=(val)
+    val.is_a?(String) ? super(ERB::Util.escape_html(val)) : super(val)
+  end
+
   default_scope do
     if Category.where(hidden: true).any?
       where("category NOT IN (?)", Category.where(hidden: true).pluck(:name))

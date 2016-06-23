@@ -1,68 +1,13 @@
-<br>
-<br>
-<!-- hold your horses -->
-
-<div id="topRowContainer" class="container">
-  <div class="row">
-    <div class="button pseudobutton">
-      <a class="button" href="/">root</a>
-    </div>
-  </div>
-</div>
-
-<div id="importButtonsContainer" class="marked-container container">
-  <div class="row">
-    <%= render "import_from_yaml_button" %> <br>
-    <%= render "import_from_remoteok_button" %> <br>
-    <%= render "import_from_stackoverflow_button" %> <br>
-    <%= render "import_from_indeed_button" %>
-  </div>
-</div>
-
-<div id="settingsButtonsContainer" class="container">
-  <div class="row">
-    <%= render "autoscroll_button" %>
-    <%= render "category_toggler_button" %>
-  </div>
-</div>
-
-<div id="filterOptionsContainer" class="marked-container container">
-  <div class="row"><%= render "filter_options" %></div>
-</div>
-
-<div id="searchContainer" class="container">
-  <div class="row"><%= render "search" %></div>
-  <div class="row"><%= render "search_results" %></div>
-</div>
-
-<div id="statsContainer" class="marked-container container">
-  <div class="row">
-    <%= render "stats" %>
-  </div>
-</div>
-
-<%= render "recently_edited_companies" %>
- 
-<% if @most_recent_skips %>
-  <%= render "most_recent_skips" %>
-<% elsif @company.persisted?%>
-  <%= render "current_company" %>
-<% end %>
-<% if @company&.persisted? %>
-  <h4> Edit company: <b><%= @company.name %><b> </h4>
-  <%= render "company_form", company: @company %>
-<% end %>
-<h4> New company </h4>
-<%= render "company_form", company: nil %>
-
+<br><br>
+<%= render "main_content" %>
 <br><br><br><br><br><br>
 
 <script>
-<% if session[:autoscroll] %>
-  $( document ).on('turbolinks:load', function() {
-    $('body').scrollTo('.company');
-  })
-<% end %>
+ <%= render(partial: "autoscroll_script", formats: [:js]) %>
+</script>
+
+<script>
+
 </script>
 
 

@@ -1,0 +1,40 @@
+
+<div id="filterOptionsContainer" class="col-xs-12">
+  <div class="row"><%= render "filter_options" %></div>
+</div>
+
+<div id="statsContainer" class="col-xs-12">
+  <div class="row">
+    <%= render "stats" %>
+  </div>
+</div>
+
+<div id="recentlyEditedCompaniesContainer" class="col-xs-12">
+  <%= render "recently_edited_companies" %>
+</div>
+
+
+
+<div id="searchContainer" class="col-xs-12">
+  <div class="row"><%= render "search_results" %></div>
+</div>
+
+
+
+<% if @most_recent_skips %>
+  <div id="mostRecentSkipsContainer" class="col-xs-12">
+    <%= render "most_recent_skips" %>
+  </div>
+<% elsif @company.persisted?%>
+  <div id="currentCompanyContainer" class="col-xs-12">
+    <%= render "current_company" %>
+  </div>
+<% end %>
+
+<% if @company&.persisted? %>
+  <h4> Edit company: <b><%= @company.name %><b> </h4>
+  <%= render "company_form", company: @company %>
+<% end %>
+
+<h4> New company </h4>
+<%= render "company_form", company: nil %>

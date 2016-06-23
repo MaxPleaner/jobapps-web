@@ -1,39 +1,38 @@
-  <div class="row inline-forms">
+<div class="foo">
+  <% if @company.starred %>
+    <form class="inline-block" action="/update" method="POST" >
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="id" value="<%= @company.id %>">
+      <input type="hidden" name="cmd" value="unstar">
+      <input type="submit" value="unstar">
+    </form>
+  <% else %>
+    <form class="inline-block" action="/update" method="POST" >
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="id" value="<%= @company.id %>">
+      <input type="hidden" name="cmd" value="star">
+      <input type="submit" value="star">
+    </form>
+  <% end %>
 
-      <% if @company.starred %>
-        <form action="/update" method="POST" >
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="hidden" name="id" value="<%= @company.id %>">
-          <input type="hidden" name="cmd" value="unstar">
-          <input type="submit" value="unstar">
-        </form>
-      <% else %>
-        <form action="/update" method="POST" >
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="hidden" name="id" value="<%= @company.id %>">
-          <input type="hidden" name="cmd" value="star">
-          <input type="submit" value="star">
-        </form>
-      <% end %>
-
-    <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_skip">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
-      <input type="submit" value="skip & next">
-    </form>
-    <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_apply">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
-      <input type="submit" value="apply & next">
-    </form>
-    <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_todo">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
-      <input type="submit" value="todo & next">
-    </form>
-    <form method="POST" action="/update?id=<%= @company.id %>&cmd=quick_rejected">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
-      <input type="submit" value="rejected & next">
-    </form><br><br>
+  <form method="POST" class="inline-block" action="/update?id=<%= @company.id %>&cmd=quick_skip">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+    <input type="submit" value="skip & next">
+  </form>
+  <form method="POST" class="inline-block" action="/update?id=<%= @company.id %>&cmd=quick_apply">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+    <input type="submit" value="apply & next">
+  </form>
+  <form method="POST" class="inline-block" action="/update?id=<%= @company.id %>&cmd=quick_todo">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+    <input type="submit" value="todo & next">
+  </form>
+  <form method="POST" class="inline-block" action="/update?id=<%= @company.id %>&cmd=quick_rejected">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+    <input type="submit" value="rejected & next">
+  </form>
 </div>

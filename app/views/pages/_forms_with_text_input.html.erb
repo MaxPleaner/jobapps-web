@@ -1,34 +1,35 @@
+<div class="row">
 
+  <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=skip_with_note">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+    <input class="large-text" type="text" name="update_value">
+    <input type="submit" value="skip with note">
+  </form>
 
+  <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=apply_with_note">
+    <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input class="large-text" type="text" name="update_value">
+    <input type="submit" value="apply with note">
+  </form>
 
-    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=skip_with_note">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
-      <input class="large-text" type="text" name="update_value">
-      <input type="submit" value="skip with note">
-    </form>
+  <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=todo_with_note">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input  class="large-text" type="text" name="update_value">
+    <input type="submit" value="todo with note">
+  </form>
 
-    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=apply_with_note">
-      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input class="large-text" type="text" name="update_value">
-      <input type="submit" value="apply with note">
-    </form>
-
-    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=todo_with_note">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input  class="large-text" type="text" name="update_value">
-      <input type="submit" value="todo with note">
-    </form>
-
-    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=not_laughing">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input  class="large-text" type="text" name="update_value">
-      <input type="submit" value="not laughing">
-    </form>
+  <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=not_laughing">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input  class="large-text" type="text" name="update_value">
+    <input type="submit" value="not laughing">
+  </form>
 
   <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=set_category">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input  class="large-text" type="text" name="update_value">
-      <input type="submit" value="set category">
-    </form>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input  class="large-text" type="text" name="update_value">
+    <input type="submit" value="set category">
+  </form>
+
+</div>

@@ -1,7 +1,7 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
- *
+ *f
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
@@ -40,7 +40,13 @@ body {
 
 
 .bordered {
-  border: 1px solid black;
+  border: 1px dotted lightgrey;
+  margin: 8px;
+  padding: 4px;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 pre, pre pre, .pre{
@@ -141,7 +147,7 @@ input[type='submit']:hover {
 
 .form-with-box {
 /*   border: 1px solid black; */
-  padding: 5px;
+/*   padding: 5px; */
 }
 
 .categories-toggler {
@@ -168,4 +174,20 @@ input[type='submit']:hover {
 
 .marked-container {
   margin: 15px;
+}
+
+.navbar {
+/*   padding: 5px; */
+  display: inline-block;
+}
+
+.navbarRow {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.navbarRow:nth-child(1) {
+  padding-top: 15px;
+}
+.navbarRow:nth-child(2) {
+  padding-bottom: 15px;
 }
