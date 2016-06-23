@@ -35,5 +35,5 @@
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
       <input type="submit" value="rejected & next">
-    </form>
+    </form><br><br>
 </div>

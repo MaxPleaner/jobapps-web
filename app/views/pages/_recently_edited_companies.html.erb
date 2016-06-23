@@ -1,4 +1,4 @@
-<% if session["recently_edited_companies"]&.any? %>
+<% if session[:recently_edited_companies]&.any? %>
   <div class="row">
     <div class="col-xs-12">
       <div class="stats">
@@ -12,5 +12,5 @@
         <% end %>
       </div>
     </div>
-  </div>
+  </div><br>
 <% end %>

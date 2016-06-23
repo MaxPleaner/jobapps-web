@@ -26,28 +26,26 @@
   </div>
 </div>
 
-<div id="filterOptionsContainer" class="container">
+<div id="filterOptionsContainer" class="marked-container container">
   <div class="row"><%= render "filter_options" %></div>
 </div>
-
-<div id="statsContainer" class="container">
-  <div class="row">
-    <%= render "stats" %>
-  </div>
-</div>
-
-
 
 <div id="searchContainer" class="container">
   <div class="row"><%= render "search" %></div>
   <div class="row"><%= render "search_results" %></div>
 </div>
 
+<div id="statsContainer" class="marked-container container">
+  <div class="row">
+    <%= render "stats" %>
+  </div>
+</div>
 
+<%= render "recently_edited_companies" %>
+ 
 <% if @most_recent_skips %>
   <%= render "most_recent_skips" %>
 <% elsif @company.persisted?%>
-  <%= render "recently_edited_companies" %>
   <%= render "current_company" %>
 <% end %>
 <% if @company&.persisted? %>
