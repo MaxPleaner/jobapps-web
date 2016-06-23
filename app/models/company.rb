@@ -52,6 +52,7 @@ class Company < ApplicationRecord
 
   validates :name, :desc, presence: true, allow_blank: false
   validates :name, uniqueness: true
+  validates :category, presence: true, allow_blank: false
 
   def status
     [

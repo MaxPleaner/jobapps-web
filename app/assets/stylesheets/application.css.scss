@@ -26,13 +26,23 @@ body {
   background-color: cadetblue !important;
 }
 
+
+@mixin button {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 10px;
+  color: black;
+  font-weight: bold;
+  background-color: lightblue;
+  transition: background-color .3s ease-in;
+}
+
+
 .bordered {
   border: 1px solid black;
 }
 
-.container {
-  font-size: 9px;
-}
 pre, pre pre, .pre{
   color: white;
   background-color: black;
@@ -40,10 +50,6 @@ pre, pre pre, .pre{
   white-space: pre-wrap;
 }
 
-
-.company pre {
-  font-size: 16px;
-}
 
 .company-attr {
   display: inline-block;
@@ -53,17 +59,16 @@ pre, pre pre, .pre{
   font-weight: bold;
   color: lighten(grey, 10%);
   letter-spacing: 1px;
-  font-size: 20px;
   margin: 5px;
 }
 .stats {
-  width: 100%;
-  border: 1px solid white;
+  @include button
+/*   width: 100%; */
+/*   border: 1px solid white;
   background-color: black;
   display: inline-block;
   padding: 5px;
-  color: white;
-  font-size: 25px;
+  color: white; */
 }
 
 .statistic {
@@ -72,18 +77,6 @@ pre, pre pre, .pre{
   margin: 5px;
   padding: 5px;
   display: inline-block;
-}
-
-@mixin button {
-  font-size: 20px;
-  display: inline-block;
-  padding: 15px;
-  border: 1px solid black;
-  margin: 10px;
-  color: black;
-  font-weight: bold;
-  background-color: lightblue;
-  transition: background-color .3s ease-in;
 }
 
 .button {
@@ -99,9 +92,16 @@ pre, pre pre, .pre{
   background-color: lighten(lightblue, 10%);
 }
 
-.button.pseudobutton {
+@mixin pseudobutton {
   transition: none;
   background-color: lighten(lightblue, 15%);
+}
+.button.pseudobutton {
+  @include pseudobutton
+}
+
+.pseudobutton {
+  @include pseudobutton
 }
 
 // .button a {
@@ -116,14 +116,12 @@ pre, pre pre, .pre{
 // }
 
 .large-text {
-  font-size: 20px;
   display: inline-block;
   margin: 20px;
 }
 
 input[type='submit'] {
   @include button;
-  // font-size: 40px;
 }
 
 input[type='submit']:hover {
@@ -136,10 +134,6 @@ input[type='submit']:hover {
 }
 
 
-
-.biginput {
-  font-size: 16px;
-}
 
 .inline-forms form {
   display: inline-block;
@@ -165,7 +159,6 @@ input[type='submit']:hover {
 }
 
 .scraper-buttons a {
-  font-size: 20px;
   display: inline-block;
   padding: 5px;
   margin: 5px;
