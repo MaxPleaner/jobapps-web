@@ -1,0 +1,15 @@
+<form action="/" method="GET">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="filter" value="most_recent_skips">
+  <input class="large-text" type="number" name="most_recent_skip_count" placeholder="number" value="<%= @most_recent_skip_count || 5 %>">
+  <input type="submit" value="# to show">
+</form>
+
+<br><br>
+
+<% @most_recent_skips.reverse_each do |company| %>
+  <pre class="company">
+    <a href="/?id=<%= company.id %>"><%= raw company.attributes.ai(html: true).html_safe %></a>
+    <%#= raw company.attributes.ai(html: true).html_safe %>
+  </pre>
+<% end %>

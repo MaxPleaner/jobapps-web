@@ -1,11 +1,5 @@
-  <div class="row">
-    <div class="col-xs-12">
-      <% stats_string = "<i>stats</i><br><div class='statistic'>#{@percentage_completed} completed</div><div class='statistic'>#{@todos_count} todos </div><div class='statistic'>#{@application_count} applied </div><div class='statistic'>#{@skipped_count} skipped </div><div class='statistic'>#{Company.blank.count} remaining </div>" %>
-      <span class="stats">
-        <%= raw stats_string.html_safe %>
-      </span>
-    </div>
-      <br>
-      <br>
-      <br>
-  </div><br>
+
+<% stats_string = "<i>stats</i><br><div class='statistic'>#{@percentage_completed} completed</div><div class='statistic'>#{@todos_count} todos </div><div class='statistic'>#{@application_count} applied </div><div class='statistic'>#{@skipped_count} skipped </div><div class='statistic'>#{Company.blank.count} remaining </div>" %>
+<span class="button pseudobutton stats">
+  <%= raw stats_string.html_safe %>
+</span>

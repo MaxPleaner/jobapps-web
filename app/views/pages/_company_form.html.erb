@@ -1,4 +1,5 @@
 <% @company = company || Company.new %>
+
 <form class="large-text" action="/update?cmd=add_company" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <% if @company.persisted? %>

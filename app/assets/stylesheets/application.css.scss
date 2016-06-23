@@ -30,8 +30,8 @@ body {
 @mixin button {
   display: inline-block;
   padding: 5px;
-  border: 1px solid black;
-  margin: 10px;
+/*   border: 1px solid black; */
+  margin: 5px;
   color: black;
   font-weight: bold;
   background-color: lightblue;
@@ -62,7 +62,7 @@ pre, pre pre, .pre{
   margin: 5px;
 }
 .stats {
-  @include button
+  @include button;
 /*   width: 100%; */
 /*   border: 1px solid white;
   background-color: black;
@@ -73,7 +73,7 @@ pre, pre pre, .pre{
 
 .statistic {
   /*width: 100%;*/
-  border: 1px solid white;
+/*   border: 1px solid white; */
   margin: 5px;
   padding: 5px;
   display: inline-block;
@@ -164,4 +164,8 @@ input[type='submit']:hover {
   margin: 5px;
   border: 1px solid black;
   color: black;
+}
+
+.marked-container {
+  margin: 15px;
 }

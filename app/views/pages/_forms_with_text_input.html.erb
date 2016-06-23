@@ -1,0 +1,49 @@
+
+
+
+    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=skip_with_note">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+      <input class="large-text" type="text" name="update_value">
+      <input type="submit" value="skip with note">
+    </form> <br>
+
+    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=apply_with_note">
+      <input type="hidden" name="next_id" value=<%= companies_query.where("id > ?", @company.id).first&.id || companies_query.first&.id || @company.get_next&.id %>>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input class="large-text" type="text" name="update_value">
+      <input type="submit" value="apply with note">
+    </form> <br>
+
+    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=todo_with_note">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input  class="large-text" type="text" name="update_value">
+      <input type="submit" value="todo with note">
+    </form> <br>
+
+    <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=not_laughing">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input  class="large-text" type="text" name="update_value">
+      <input type="submit" value="not laughing">
+    </form> <br>
+
+  <form class="form-with-box" method="POST" action="/update?id=<%= @company.id %>&cmd=set_category">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input  class="large-text" type="text" name="update_value">
+      <input type="submit" value="set category">
+    </form> <br>
+
+    <form method="POST" action="/update?id=<%= @company.id %>&cmd=undo_todo">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="undo todo">
+    </form> <br>
+
+  <form method="POST" action="/update?id=<%= @company.id %>&cmd=undo_skip">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="undo skip">
+    </form> <br>
+
+    <form method="POST" action="/update?id=<%= @company.id %>&cmd=undo_apply">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="undo apply">
+    </form> <br>

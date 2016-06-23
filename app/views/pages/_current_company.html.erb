@@ -1,0 +1,12 @@
+  <% page_name, companies_query = get_page_name_and_companies_query(session) %>
+  <% next_company, previous_company = get_next_and_previous(@company, companies_query) %>
+  <% next_id, next_name = next_company.values_at(:id, :name) %>
+  <% previous_id, previous_name = previous_company.values_at(:id, :name) %>
+
+<% passed_values = {next_id: next_id, next_name: next_name, previous_id: previous_id}.merge( %>
+<% {previous_name: previous_name, companies_query: companies_query, page_name: page_name})%>
+
+<%= render "next_and_previous_buttons", passed_values %>
+<%= render "company_details" %>
+<%= render "quick_forms", passed_values %>
+<%= render "forms_with_text_input", passed_values %>
