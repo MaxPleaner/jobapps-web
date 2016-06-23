@@ -87,7 +87,7 @@ heroku open;
 - "toggle categories" button - pick which categories of companies are shown. **Warning** this affects the default scope on companies, so if running a console when the server is also running, use `Company.unscoped.all` to __really__ get all the records.
 - search button - It is __not__ scoped by "toggle categories", and will consider every company name in the database.
 - "statistics" - scoped by  "toggle categories", this shows how far the user has progressed through their current set.
-- "recently edited companies" should show the last 5 edits made. It is buggy though.
+- "recently edited companies" shows the last 5 edits made.
 - "previous company" and "next company" buttons
 - "quick action" buttons to one-click apply, skip, todo, or star.
 - update forms for individual companies
