@@ -223,5 +223,3 @@ class PagesController < ApplicationController
   end
 
 end
-
-# bin/rails server -p $PORT -e $RAILS_ENV
