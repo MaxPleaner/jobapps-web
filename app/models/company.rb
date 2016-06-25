@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
 
   def html_escaped(str)
-    ERB::UTIL.html_escape(str)
+    ERB::Util.html_escape(str)
   end
 
   def name=(val)
