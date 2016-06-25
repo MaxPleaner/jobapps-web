@@ -1,13 +1,17 @@
 class Company < ApplicationRecord
 
+  def html_escaped(str)
+    ERB::UTIL.html_escape(str)
+  end
+
   def name=(val)
-    val.is_a?(String) ? super(ERB::Util.escape_html(val)) : super(val)
+    val.is_a?(String) ? super(html_escaped(val)) : super(val)
   end
   def desc=(val)
-    val.is_a?(String) ? super(ERB::Util.escape_html(val)) : super(val)
+    val.is_a?(String) ? super(html_escaped(val)) : super(val)
   end
   def jobs=(val)
-    val.is_a?(String) ? super(ERB::Util.escape_html(val)) : super(val)
+    val.is_a?(String) ? super(html_escaped(val)) : super(val)
   end
 
   default_scope do
