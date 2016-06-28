@@ -70,63 +70,20 @@ class PagesController < ApplicationController
   end
 
   def root
-    if generic_params[:autoscroll] == "on"
-      session["autoscroll"] = true
-    elsif generic_params[:autoscroll] == "off"
-      session["autoscroll"] = false
-    end
-    filter = generic_params[:filter]
-    if filter && filter.eql?("only_todos")
-      set_current_page("only_todos")
-    elsif filter && filter.eql?("no_filter")
-      set_current_page("no_filter")
-    elsif filter && filter.eql?("not_only_todos")
-      set_current_page("none")
-    elsif filter && filter.eql?("most_recent_skips")
-      set_current_page("most_recent_skips")
-      @most_recent_skip_count = generic_params[:most_recent_skip_count] || session["most_recent_skip_count"] || 5
-      session["most_recent_skip_count"] = @most_recent_skip_count
-    elsif filter && filter.eql?("starred")
-      set_current_page("starred")
-    end
-    @most_recent_skip_count = session["most_recent_skip_count"] || 5
-    @percentage_completed = "#{((Company.nonblank.count.to_f / Company.count.to_f) * 100.to_f).round(2)}%"
+    completed_pct = ((Company.nonblank.count.to_f / Company.count.to_f) * 100.to_f).round(2)
+    @percentage_completed = "#{completed_pct}%"
     @todos_count = Company.todo.count
     @application_count = Company.applied.count
     @skipped_count = Company.skipped.count
-    if generic_params[:filter] && generic_params[:filter].eql?("new_company")
-      @company = Company.new(flash["company"]) || Company.new
-    elsif generic_params[:id]
-      @company = Company.unscoped.find(generic_params[:id])
-    else
-      if session["no_filter"]
-        @company = Company.first
-      elsif session["starred"]
-        @company = Company.unscoped.where(starred: true).first
-      elsif session["only_todos"]
-        @company = Company.todo.limit(1).first
-        unless @company
-          @company = Company.first
-          set_current_page("no_filter")
-          flash[:messages] << "No more todos. Switching to no filter"
-        end
-      elsif session["most_recent_skips"]
-        @most_recent_skips = Company.skipped.last(@most_recent_skip_count)
-      else
-        @company = Company.blank.limit(1).first
-        unless @company
-          @company = Company.first
-          set_current_page("no_filter")
-          flash[:messages] << "No more blanks. Switching to no filter."
-        end
-      end
-    end
-    @company ||= Company.new
+    # Some helper methods called from application_controller:
+    set_autoscroll
+    set_current_page
+    define_current_company
   end
 
   def category_toggler
     @categories = Category.all.order(id: :desc)
-    if generic_params[:cmd] && generic_params[:cmd].eql?("toggle")
+    if generic_params[:cmd] == "toggle"
       @category = Category.find_by(id: generic_params[:category_id])
       @category.update(hidden: !@category.hidden)
       redirect_to "/category_toggler"
@@ -144,21 +101,6 @@ class PagesController < ApplicationController
     @company = Company.unscoped.find_by(id: generic_params[:id])
     cmd = generic_params[:cmd]
     case cmd
-    when "add_company"
-      add_company = true
-      @company&.update(company_params)
-      @company ||= Company.create(company_params)
-      if @company.persisted?
-        @category = Category.find_or_create_by(name: @company.category)
-      else
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
-    when "set_category"
-      if @company.update(category: generic_params[:update_value])
-        @category = Category.find_or_create_by(name: @company.category)
-      else
-        @company.errors.full_messages.each { |err| flash[:messages] << err}
-      end
     when "quick_skip"
       @company.update(skip: "true", todo: nil)
     when "quick_apply"
@@ -185,25 +127,20 @@ class PagesController < ApplicationController
       @company.update(starred: false)
     when "undo_apply"
       @company.update(applied: false)
+    when "add_company"
+      is_add_company_request = true
+      add_company # see application controller
+    when "set_category"
+      set_category # see application controller
     end
-    if @company.persisted?
-      session["recently_edited_companies"] ||= []
-      session["recently_edited_companies"] = session["recently_edited_companies"].reject { |company|
-          company["id"].eql?(@company.id)
-      }
-      session["recently_edited_companies"] << @company.status.merge(
-        "id" => @company.id
-      )
-      session["recently_edited_companies"] = session["recently_edited_companies"][1..-1] if session["recently_edited_companies"].length > 5
-    end
-    if add_company
-      if @company.persisted?
-        redirect_to "/?id=#{@company.id}"
-      else
+    is_company_persisted = @company.persisted?
+    set_recently_edited_companies if is_company_persisted
+    if is_add_company_request && is_company_persisted
+      redirect_to "/?id=#{@company.id}"
+    elsif is_add_company_request # error adding the company
         @company.errors.full_messages.each { |err| flash[:messages] << err}
         flash["company"] = @company.attributes
         redirect_to "/?filter=new_company"
-      end
     elsif !(generic_params[:next_id]).blank?
       redirect_to "/?id=#{generic_params[:next_id]}"
     else
