@@ -15,6 +15,12 @@
   <%= render "navbar" %>
 </div>
 
+<% flash[:messages]&.each do |message| %>
+  <div class="pseudobutton">
+    <%= message %>
+  </div>
+<% end %>
+
 <div class="container">
     <%= yield %>
 </div>
