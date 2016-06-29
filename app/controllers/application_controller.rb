@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
     flash[:messages] ||= []
   end
 
-  def set_autoscroll(autoscroll_setting=false)
-    case autoscroll_setting
-    when "ok"
+  def set_autoscroll
+    case generic_params[:autoscroll]
+    when "on"
       session["autoscroll"] = true
     when "off"
       session["autoscroll"] = false
