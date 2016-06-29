@@ -5,7 +5,7 @@
 <br><br><br><br><br><br>
 
 <b> Applied counts: </b> <br>
-<%= raw Company.calculate_stats.sort.ai(html: true).html_safe %>
+<%= raw Company.calculate_stats.sort.to_h.ai(html: true).html_safe %>
 
 <script>
  <%= render(partial: "autoscroll_script", formats: [:js]) %>
