@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
 
   def self.calculate_stats
-    Company.unscoped.group("DATE(created_at)").count
+    Company.unscoped.applied.group("DATE(created_at)").count
   end
 
   def html_escaped(str)
