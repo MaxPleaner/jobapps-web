@@ -79,7 +79,7 @@ class PagesController < ApplicationController
     set_autoscroll
     set_current_page
     define_current_company
-    setup_data_csv_for_graph
+#     setup_data_csv_for_graph
   end
 
   def category_toggler
