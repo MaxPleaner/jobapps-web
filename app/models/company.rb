@@ -1,10 +1,7 @@
 class Company < ApplicationRecord
 
   def self.calculate_stats
-    Company.unscoped.applied.reduce(Hash.new{ |k,v| v = 0}) do |hash, company|
-      date_str = company.updated_at.strftime("%d - %b")
-      hash.tap { |hash| hash[date_str] += 1 }
-    end
+    Company.group("DATE(created_at)").count
   end
 
   def html_escaped(str)
@@ -101,5 +98,3 @@ class Company < ApplicationRecord
   end
 
 end
-
-CompanyStats = Company.calculate_stats
