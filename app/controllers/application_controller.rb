@@ -101,8 +101,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_current_page_in_session
-    page = generic_params[:filter]
+  def set_current_page_in_session(page)
     {
       only_todos: page.eql?("only_todos"),
       no_filter: page.eql?("no_filter"),
