@@ -1,5 +1,8 @@
 <br><br>
 
+<b> Showing categories: </b> <%= Category.where(hidden: false).pluck(:name).join(", ") %> <br>
+
+
 <%= render "main_content" %>
 
 <br><br><br><br><br><br>
