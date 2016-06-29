@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
 
   def switch_to_no_filter
     Company.first.tap do
-      set_current_page("no_filter")
+      set_current_page_in_session("no_filter")
       flash[:messages] << "No more blanks. Switching to no filter."
     end
   end
