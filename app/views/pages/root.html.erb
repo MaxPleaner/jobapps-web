@@ -7,9 +7,10 @@
 
 <br><br><br><br><br><br>
 
-<b> Applied counts: </b> <i>total</i>-<%= Company.unscoped.applied.count %><br>
+<b> Applied counts: </b><br>
+<i>total</i>: <%= Company.unscoped.applied.count %><br>
 <% Category.all.each do |category| %>
-<i><%= category.name %></i>-<%= Company.unscoped.where(category: category.name).applied.count %>
+<i><%= category.name %></i>: <%= Company.unscoped.where(category: category.name).applied.count %> <br>
 <% end %>
 
 <%= raw Company.calculate_stats.sort.reverse.to_h.ai(html: true).html_safe %>
