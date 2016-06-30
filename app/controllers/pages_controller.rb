@@ -3,11 +3,16 @@ class PagesController < ApplicationController
   def get_remoteok_listings
     Category.find_or_create_by(name: "remoteok")
     JSON.parse(`curl https://remoteok.io/index.json`).each do |listing|
-      Company.create(
+      company = Company.new(
         name: listing["company"],
         desc: "#{listing['position']} - #{listing["tags"].join(",")} - #{listing["description"]}",
         category: "remoteok"
       )
+      if params[:query]
+        company.save if company.desc.include?(query)
+      else
+        company.save
+      end
     end
     redirect_to :back
   end

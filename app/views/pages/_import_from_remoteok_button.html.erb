@@ -1,2 +1,6 @@
-<a class="button" href="get_remoteok_listings">get remoteok listings</a><br>
+<form class="inline-block" action="get_remote_ok_listings" method="GET">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="get remoteok listings">
+  <input class="button pseudobutton" type="text" name="query" placeholder="query">
 
+<form>
