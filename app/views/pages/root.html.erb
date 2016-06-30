@@ -13,7 +13,9 @@
 <i><%= category.name %></i>: <%= Company.unscoped.where(category: category.name).applied.count %> <br>
 <% end %>
 
-<%= raw Company.calculate_stats.sort.reverse.to_h.ai(html: true).html_safe %>
+<% stats = Company.calculate_stats.sort.reverse.to_h %>
+<% stats = stats.transform_keys { |key| time_ago_in_words(key) + " ago" } %>
+<%= raw stats.ai(html: true).html_safe %>
 
 <script>
  <%= render(partial: "autoscroll_script", formats: [:js]) %>
