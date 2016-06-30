@@ -9,7 +9,7 @@ class PagesController < ApplicationController
         category: "remoteok"
       )
       if params[:query]
-        company.save if company.desc.include?(query)
+        company.save if company.desc.include?(params[:query])
       else
         company.save
       end
