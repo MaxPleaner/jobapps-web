@@ -60,7 +60,7 @@ class PagesController < ApplicationController
     !params[:search_term].blank? && (job_query[:search_term] = params[:search_term])
     FindJobListings::StackOverflow_API.new.jobs(job_query)&.each do |company|
       company = Company.create(
-        name: company[:title],
+        name: company[:title].split("at ")[-1].split(" (")[0],
         desc: company[:description] + " - " + company[:location],
         jobs: company[:link],
         category: "stackoverflow"
