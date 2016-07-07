@@ -98,6 +98,7 @@ class Company < ApplicationRecord
   end
 
   def self.dups(name)
+    ActiveRecord::Base.logger.level = 1 # hide SQL output for this command
     matches = Company.search(name)
     maximum_name_length = matches.map { |match| match['name'].length }.max
     maximum_id_length = matches.map { |match| match['id'].to_s.length }.max
@@ -111,6 +112,7 @@ class Company < ApplicationRecord
       status = match['status'].to_s.send(status_color).ljust(maximum_status_length)
       puts "#{id} | #{name} | #{status}"
     end
+    ActiveRecord::Base.logger.level = 0 # Bring back SQL output for the app
   end
 
 end
