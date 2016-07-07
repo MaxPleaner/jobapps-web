@@ -110,7 +110,7 @@ class Company < ApplicationRecord
       id   = match['id'].to_s.ljust(maximum_id_length)
       status_color = :green if match['status'].to_s.include?('applied')
       status_color ||= ['rejected', 'skip'].any? { |attr| match['status'].to_s.include?(attr) } ? :red : :blue
-      status = match['status'].to_s.send(status_color).ljust(maximum_status_length)
+      status = match['status'].to_s.first(100).send(status_color).ljust(maximum_status_length)
       puts "#{id} | #{name} | #{status}"
     end
     ActiveRecord::Base.logger.level = 0 # Bring back SQL output for the app
