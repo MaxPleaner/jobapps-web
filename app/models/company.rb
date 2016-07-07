@@ -106,7 +106,8 @@ class Company < ApplicationRecord
       match['status'].delete 'name'
       name = match['name'].rjust(maximum_name_length).white_on_black
       id   = match['id'].to_s.ljust(maximum_id_length)
-      status_color = match['status'].to_s.include?('applied') ? :green : :red
+      status_color = :green if match['status'].to_s.include?('applied')
+      status_color ||= ['rejected', 'skip'].any? { |attr| match['status'].to_s.include?(attr) } ? :red : :blue
       status = match['status'].to_s.send(status_color).ljust(maximum_status_length)
       puts "#{id} | #{name} | #{status}"
     end
