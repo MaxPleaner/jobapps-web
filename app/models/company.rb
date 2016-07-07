@@ -124,6 +124,22 @@ class Company < ApplicationRecord
     dups(names)
   end
 
+  def self.delete_all_without_text(texts=[])
+    raise(ArgumentError, "an array of words should be passed") if texts.empty?
+    blanks = Company.blank.select(:id, :todo, :name, :desc, :category, :jobs)
+             .to_a
+             .reject { |company| company.todo }
+    to_be_destroyed = blanks.select do |company|
+      [:desc, :name, :jobs].none? do |attribute|
+        texts.any? do |word|
+          company.send(attribute)&.downcase&.include?(word)
+        end
+      end
+    end
+    byebug
+    to_be_destroyed.each(&:destroy)
+  end
+
   def skip!(txt=nil)
     update(skip: txt || "true")
   end
