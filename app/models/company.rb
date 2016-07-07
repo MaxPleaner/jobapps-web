@@ -97,13 +97,14 @@ class Company < ApplicationRecord
     super(val || false)
   end
 
-  def self.dups(name)
+  def self.dups(names=[], n=5)
+    names = [names] unless names.is_a?(Array)
     ActiveRecord::Base.logger.level = 1 # hide SQL output for this command
-    matches = Company.search(name)
+    matches = names.reduce([]) { |matches, name| matches.concat(Company.search(name).first(n)) }
     maximum_name_length = matches.map { |match| match['name'].length }.max
     maximum_id_length = matches.map { |match| match['id'].to_s.length }.max
     maximum_status_length = matches.map { |match| match['status'].to_s.length }.max
-    matches.first(5).each do |match|
+    matches.each do |match|
       match['status'].delete 'name'
       name = match['name'].rjust(maximum_name_length).white_on_black
       id   = match['id'].to_s.ljust(maximum_id_length)
@@ -113,6 +114,11 @@ class Company < ApplicationRecord
       puts "#{id} | #{name} | #{status}"
     end
     ActiveRecord::Base.logger.level = 0 # Bring back SQL output for the app
+  end
+
+  def self.random(n=5)
+    names = Company.order("RANDOM()").limit(n).pluck(:name)
+    dups(names)
   end
 
 end
