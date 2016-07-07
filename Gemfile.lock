@@ -57,6 +57,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    colored (1.2)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     domain_name (0.5.20160615)
@@ -204,6 +205,7 @@ DEPENDENCIES
   awesome_print
   byebug
   coffee-rails (~> 4.1.0)
+  colored
   fuzzy_match
   indeed-ruby
   jbuilder (~> 2.0)

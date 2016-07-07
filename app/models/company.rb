@@ -35,7 +35,7 @@ class Company < ApplicationRecord
     results = match_records.sort_by do |company|
       match_names.index company.name
     end.first(20).map do |company|
-      { "name" => company.name, "id" => company.id }
+      { "name" => company.name, "id" => company.id, "status" => company.status }
     end
     results
     # Alternative way to find records by ids
@@ -95,6 +95,21 @@ class Company < ApplicationRecord
 
   def starred=(val)
     super(val || false)
+  end
+
+  def self.dups(name)
+    matches = Company.search(name)
+    maximum_name_length = matches.map { |match| match['name'].length }.max
+    maximum_id_length = matches.map { |match| match['id'].to_s.length }.max
+    maximum_status_length = matches.map { |match| match['status'].to_s.length }.max
+    matches.first(5).each do |match|
+      match['status'].delete 'name'
+      name = match['name'].rjust(maximum_name_length).white_on_black
+      id   = match['id'].to_s.ljust(maximum_id_length)
+      status_color = match['status'].to_s.include?('applied') ? :green : :red
+      status = match['status'].to_s.send(status_color).ljust(maximum_status_length)
+      puts "#{id} | #{name} | #{status}"
+    end
   end
 
 end
