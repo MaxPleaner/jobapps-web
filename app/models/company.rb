@@ -125,7 +125,7 @@ class Company < ApplicationRecord
     update(skip: txt || "true")
   end
 
-  def apply!
+  def apply!(txt=nil)
     update(applied: txt || "true")
   end
 
