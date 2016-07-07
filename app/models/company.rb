@@ -121,4 +121,12 @@ class Company < ApplicationRecord
     dups(names)
   end
 
+  def skip!(txt=nil)
+    update(skip: txt || "true")
+  end
+
+  def apply!
+    update(applied: txt || "true")
+  end
+
 end
