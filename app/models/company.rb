@@ -104,6 +104,7 @@ class Company < ApplicationRecord
     maximum_name_length = matches.map { |match| match['name'].length }.max
     maximum_id_length = matches.map { |match| match['id'].to_s.length }.max
     maximum_status_length = matches.map { |match| match['status'].to_s.length }.max
+    maximum_status_length -= (maximum_id_length + maximum_name_length + 5)
     matches.each do |match|
       match['status'].delete 'name'
       name = match['name'].rjust(maximum_name_length).white_on_black
