@@ -98,23 +98,25 @@ class Company < ApplicationRecord
   end
 
   def self.dups(names=[], n=5)
-    names = [names] unless names.is_a?(Array)
-    ActiveRecord::Base.logger.level = 1 # hide SQL output for this command
-    matches = names.reduce([]) { |matches, name| matches.concat(Company.search(name).first(n)) }
-    maximum_name_length = matches.map { |match| match['name'].length }.max
-    maximum_id_length = matches.map { |match| match['id'].to_s.length }.max
-    maximum_status_length = matches.map { |match| match['status'].to_s.length }.max
-    maximum_status_length -= (maximum_id_length + maximum_name_length + 5)
-    matches.each do |match|
-      match['status'].delete 'name'
-      name = match['name'].rjust(maximum_name_length).white_on_black
-      id   = match['id'].to_s.ljust(maximum_id_length)
-      status_color = :green if match['status'].to_s.include?('applied')
-      status_color ||= ['rejected', 'skip'].any? { |attr| match['status'].to_s.include?(attr) } ? :red : :blue
-      status = match['status'].to_s.first(100).send(status_color).ljust(maximum_status_length)
-      puts "#{id} | #{name} | #{status}"
+    result = with_captured_stdout do
+      names = [names] unless names.is_a?(Array)
+      ActiveRecord::Base.logger.level = 1 # hide SQL output for this command
+      matches = names.reduce([]) { |matches, name| matches.concat(Company.search(name).first(n)) }
+      maximum_name_length = matches.map { |match| match['name'].length }.max
+      maximum_id_length = matches.map { |match| match['id'].to_s.length }.max
+      maximum_status_length = matches.map { |match| match['status'].to_s.length }.max
+      maximum_status_length -= (maximum_id_length + maximum_name_length + 5)
+      matches.each do |match|
+        match['status'].delete 'name'
+        name = match['name'].rjust(maximum_name_length).white_on_black
+        id   = match['id'].to_s.ljust(maximum_id_length)
+        status_color = :green if match['status'].to_s.include?('applied')
+        status_color ||= ['rejected', 'skip'].any? { |attr| match['status'].to_s.include?(attr) } ? :red : :blue
+        status = match['status'].to_s.first(100).send(status_color).ljust(maximum_status_length)
+        puts "#{id} | #{name} | #{status}"
+      end
+      ActiveRecord::Base.logger.level = 0 # Bring back SQL output for the app
     end
-    ActiveRecord::Base.logger.level = 0 # Bring back SQL output for the app
   end
 
   def self.random(n=5)
@@ -128,6 +130,17 @@ class Company < ApplicationRecord
 
   def apply!(txt=nil)
     update(applied: txt || "true")
+  end
+
+  def self.with_captured_stdout
+    begin
+      old_stdout = $stdout
+      $stdout = StringIO.new('','w')
+      yield
+      $stdout.string
+    ensure
+      $stdout = old_stdout
+    end
   end
 
 end
