@@ -120,7 +120,7 @@ class Company < ApplicationRecord
   end
 
   def self.random(n=5)
-    names = Company.order("RANDOM()").limit(n).pluck(:name)
+    names = Company.blank.order("RANDOM()").limit(n).pluck(:name)
     dups(names)
   end
 
