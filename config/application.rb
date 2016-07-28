@@ -61,3 +61,11 @@ module JobappsWeb
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+module ActiveRecord
+  class Base
+    def self.sample
+      offset(rand(size)).first
+    end
+  end
+end

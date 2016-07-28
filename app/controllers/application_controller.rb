@@ -36,7 +36,11 @@ class ApplicationController < ActionController::Base
    elsif is_company_show_page
       @company = Company.unscoped.find(generic_params[:id])
    elsif is_no_filter
-      @company = Company.first
+      if params[:random]
+        @company = Company.sample
+      else
+        @company = Company.first
+      end
    elsif is_starred_filter
       @company = Company.unscoped.where(starred: true).first
    elsif is_todos_filter
