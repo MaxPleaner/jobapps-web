@@ -36,11 +36,7 @@ class ApplicationController < ActionController::Base
    elsif is_company_show_page
       @company = Company.unscoped.find(generic_params[:id])
    elsif is_no_filter
-      if params[:random]
-        @company = Company.sample
-      else
         @company = Company.first
-      end
    elsif is_starred_filter
       @company = Company.unscoped.where(starred: true).first
    elsif is_todos_filter
@@ -48,7 +44,11 @@ class ApplicationController < ActionController::Base
    elsif is_skips_filter
       @most_recent_skips = Company.skipped.last(@most_recent_skip_count)
    else
-      @company = Company.blank.limit(1).first || switch_to_no_filter
+      if params[:random]
+        @company = Company.blank.sample
+      else
+        @company = Company.blank.limit(1).first || switch_to_no_filter
+      end
     end
     @company ||= Company.new
   end
