@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     JSON.parse(`curl https://remoteok.io/index.json`).each do |listing|
       company = Company.new(
         name: listing["company"],
-        desc: "#{listing['position']} - #{listing["tags"].join(",")} - #{listing["description"]}",
+        desc: "#{listing['position']} - #{listing["tags"]&.join(",")} - #{listing["description"]}",
         category: "remoteok"
       )
       if params[:query]
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
           desc: company[:location] + " - " + company[:description] + " - " + company[:url],
           jobs: company[:jobtitle],
           category: "indeed"
-        )
+        ) if [:company, :description, :location, :jobtitle].any? { |attr| company[attr].include? params[:search_term] }
       end
     end
     redirect_to :back
@@ -69,7 +69,7 @@ class PagesController < ApplicationController
         desc: company[:description] + " - " + company[:location],
         jobs: company[:link],
         category: "stackoverflow"
-      )
+      ) if [:title, :description, :location, :link].any? { |attr| company[attr].include?(params[:search_term] }
     end
     redirect_to :back
   end

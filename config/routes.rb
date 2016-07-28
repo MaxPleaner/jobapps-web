@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'test/root'
+
   get 'pages/root'
 
   get "/get_indeed_listings", to: "pages#get_indeed_listings"
