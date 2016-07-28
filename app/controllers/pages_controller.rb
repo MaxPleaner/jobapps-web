@@ -69,7 +69,7 @@ class PagesController < ApplicationController
         desc: company[:description] + " - " + company[:location],
         jobs: company[:link],
         category: "stackoverflow"
-      ) if [:title, :description, :location, :link].any? { |attr| company[attr].include?(params[:search_term] }
+      ) if [:title, :description, :location, :link].any? { |attr| company[attr].include?(params[:search_term]) }
     end
     redirect_to :back
   end
