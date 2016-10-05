@@ -61,3 +61,5 @@ gem 'mechanize'
 gem 'selenium-webdriver'
 gem 'activerecord-session_store'
 gem 'colored'
+
+gem 'dotenv'

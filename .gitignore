@@ -20,3 +20,5 @@ db/seeds/yml
 
 
 /backup/*
+
+.env
